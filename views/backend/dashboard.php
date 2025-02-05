@@ -1,6 +1,9 @@
 <?php
 include '../../header.php';
 
+var_dump($_SESSION);
+
+
 ?>
 
 <!-- Bootstrap admin dashboard template -->

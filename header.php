@@ -3,6 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
 session_start();
+var_dump($_SESSION);
 
 sql_connect();
 
@@ -68,8 +69,7 @@ require_once 'config.php';
 
             if(isset($_SESSION['pseudoMemb']) ){
 
-            echo '<a class="btn btn-danger m-1" href="/views/backend/security/login.php" role="button">Se déconnecter</a>'; 
-            session_destroy();
+            echo '<a class="btn btn-danger m-1" href="/api/security/disconnect.php" role="button">Se déconnecter</a>'; 
             } else { 
             echo '<a class="btn btn-primary m-1" href="/views/backend/security/login.php" role="button">Login</a>';
             echo '<a class="btn btn-dark m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>';
