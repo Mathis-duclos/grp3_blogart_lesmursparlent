@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 ?>
 
@@ -41,8 +42,20 @@ require_once 'config.php';
       <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Rechercher sur le site…" aria-label="Search" >
       </form>
-      <a class="btn btn-primary m-1" href="/views/backend/security/login.php" role="button">Login</a>
-      <a class="btn btn-dark m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>
+
+      <?php 
+
+            if(!isset($_SESSION['pseudoMemb']) == $_SESSION['pseudoMemb']){
+
+            echo '<a class="btn btn-primary m-1" href="/views/backend/security/login.php" role="button">délogin</a>'; 
+            } else { 
+            echo '<a class="btn btn-primary m-1" href="/views/backend/security/login.php" role="button">Login</a>';
+            echo '<a class="btn btn-dark m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>';
+
+            }
+      
+      ?>
+    
     </div>
   </div>
 </nav>
