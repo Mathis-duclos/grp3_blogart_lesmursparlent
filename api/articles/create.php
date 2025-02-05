@@ -12,7 +12,6 @@ $parag2Art = ctrlSaisies($_POST['parag2Art']);
 $libSsTitr2Art = ctrlSaisies($_POST['libSsTitr2Art']);
 $parag3Art = ctrlSaisies($_POST['parag3Art']);
 $libConclArt = ctrlSaisies($_POST['libConclArt']);
-$numArt = $_POST['numArt'];
 $listeMotsCles = $_POST['selectedKeywords'];
 
 if (isset($_FILES['urlPhotArt'])) {
@@ -33,7 +32,10 @@ sql_insert(
     "'$libTitrArt', '$libChapoArt', '$libAccrochArt', '$parag1Art', '$libSsTitr1Art', '$parag2Art', '$libSsTitr2Art', '$parag3Art', '$libConclArt', '$nomImage', '$numThem'"
 );
 
-$numArt = sql_select('ARTICLE' , "MAX(numArt) as $numArt");
+$numArt = sql_select('ARTICLE' , "MAX(numArt) as numArt");
+
+
+$numArt = $numArt[0]['numArt'];
 
 foreach ($listeMotsCles as $motscle) {
     sql_insert(

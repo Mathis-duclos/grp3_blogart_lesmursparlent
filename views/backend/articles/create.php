@@ -12,7 +12,8 @@ include '../../../header.php';
         <div class="col-md-12">
             <!-- Form to create a new article -->
             <form action="<?php echo ROOT_URL . '/api/articles/create.php' ?>" method="post" enctype="multipart/form-data">
-                <div class="form-group">
+
+                    <div class="form-group">
                     <label for="title">Titre</label>
                     <input type="text" class="form-control" id="libTitrArt" name="libTitrArt" maxlength="100" placeholder="100 caracteres max" required>
                 </div>
@@ -69,8 +70,6 @@ include '../../../header.php';
                     <label for="urlPhotArt">Image d’illustration</label>
                     <input type="file" class="form-control-file" id="urlPhotArt" name="urlPhotArt" accept="image/*" required>
                 </div>
-                <button type="submit" class="btn btn-success">Confirmer create ?</button>
-                
                 <!-- Dual Listbox pour les mots clés -->
                 <div class="form-group">
                     <label for="keywords">Mots clés</label>
@@ -83,18 +82,15 @@ include '../../../header.php';
                             }
                             ?>
                         </select>
-
                         <div class="d-flex flex-column align-items-center justify-content-center mx-2">
                             <button type="button" class="btn btn-primary mb-2" onclick="moveKeywords('available-keywords', 'selected-keywords')">→</button>
                             <button type="button" class="btn btn-primary" onclick="moveKeywords('selected-keywords', 'available-keywords')">←</button>
                         </div>
-
                         <select id="selected-keywords" name="selectedKeywords[]" class="form-control" multiple size="8" style="width: 45%;">
                             <!-- Les mots clés sélectionnés iront ici -->
                         </select>
                     </div>
                 </div>
-
                 <button type="submit" class="btn btn-success">Confirmer</button>
             </form>
         </div>
