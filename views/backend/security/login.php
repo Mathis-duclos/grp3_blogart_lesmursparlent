@@ -1,6 +1,8 @@
 <?php
 include '../../../header.php';
 
+session_start();
+
 echo("Form login");
 
 ?>

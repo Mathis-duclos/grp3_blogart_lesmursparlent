@@ -1,3 +1,8 @@
+<?php
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
@@ -41,3 +46,4 @@ require_once 'config.php';
     </div>
   </div>
 </nav>
+
