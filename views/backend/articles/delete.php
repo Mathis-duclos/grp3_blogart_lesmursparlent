@@ -25,8 +25,8 @@ $plCl = sql_select('ARTICLE', 'libConclArt', "numArt = $numArt")[0]['libConclArt
         </div>
         <div class="col-md-12">
             
-            <!-- Form to Edit an article -->
-            <form action="<?php echo ROOT_URL . '/api/articles/update.php?numArt='.$numArt ?>" enctype="multipart/form-data"method="post" >
+            <!-- Form to delete an article -->
+            <form action="<?php echo ROOT_URL . '/api/articles/delete.php?numArt='.$numArt ?>" enctype="multipart/form-data" method="post" >
                 <div>
                     <label for="numArt">NUMÉRO</label>
                     <input type="text" class="form-control" id="numArt" name="numArt" maxlength="10" value="<?php echo $numArt ?>" disabled>
@@ -95,8 +95,8 @@ $plCl = sql_select('ARTICLE', 'libConclArt', "numArt = $numArt")[0]['libConclArt
                 <div> <!-- MONTER LA PHOTO ACTUELLE -->
                     <img src="<?php echo '../../../src/uploads/' . $emplacement ?>" alt="photo actuelle" style="width: 100px;">
                 </div>
-                <button type="submit" class="btn btn-danger disabled">Supprimer</button>
-                </form>
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
         </div>
     </div>
 </div>
