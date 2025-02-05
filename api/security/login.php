@@ -31,7 +31,7 @@ if ($passGood == true && $pseudoMemb == true) {
     header(header: 'Location: ../../../index.php?login=1'); 
 
 } else {
-    //echo "ce n'est pas bon";
+    echo "ce n'est pas bon";
 }
 
 
