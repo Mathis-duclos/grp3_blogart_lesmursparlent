@@ -67,7 +67,7 @@ echo("Form login");
             passwordField.type = type;
             this.textContent = type === "password" ? "Afficher" : "Cacher";
         });
-
+//a
 </script>
     </script>
 </div>
