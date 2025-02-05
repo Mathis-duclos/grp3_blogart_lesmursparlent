@@ -2,6 +2,7 @@
 include '../../../header.php';
 ?>
 
+<!-- A -->
 <!-- Bootstrap form to create a new article -->
 <div class="container">
     <div class="row">
