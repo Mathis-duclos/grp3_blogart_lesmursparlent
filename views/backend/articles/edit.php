@@ -33,7 +33,7 @@ $plCl = sql_select('ARTICLE', 'libConclArt', "numArt = $numArt")[0]['libConclArt
                 </div>
                 <div class="form-group">
                     <label for="title">Titre</label>
-                    <input type="text" class="form-control" id="libTitrArt" name="libTitrArt" maxlength="100" value="<?php echo $plTitre ?>" required>
+                    <input type="text" class="form-control" id="libTitrArt" name="libTitrArt" maxlength="100" value="<?php echo $plTitre ?>" >
                 </div>
                 <div class="form-group">
                     <label for="creation_date">Date de création</label>
@@ -45,7 +45,7 @@ $plCl = sql_select('ARTICLE', 'libConclArt', "numArt = $numArt")[0]['libConclArt
                 </div>
                 <div class="form-group">
                     <label for="chapeau">Chapô</label>
-                    <textarea class="form-control" id="libChapoArt" name="libChapoArt" maxlength="500" rows="10" cols="10" required> <?php echo $plChapo ?> </textarea>
+                    <textarea class="form-control" id="libChapoArt" name="libChapoArt" maxlength="500" rows="10" cols="10" > <?php echo $plChapo ?> </textarea>
                 </div>
                 <div class="form-group">
                     <label for="libAccrochArt">Accroche paragraphe 1</label>
@@ -90,13 +90,46 @@ $plCl = sql_select('ARTICLE', 'libConclArt', "numArt = $numArt")[0]['libConclArt
                 <!-- Upload de l'image -->
                 <div class="form-group">
                     <label for="urlPhotArt">Image d’illustration</label>
-                    <input type="file" class="form-control-file" id="urlPhotArt" name="urlPhotArt" accept="image/*" required>
+                    <input type="file" class="form-control-file" id="urlPhotArt" name="urlPhotArt" accept="image/*" >
                 </div>
                 <div> <!-- MONTER LA PHOTO ACTUELLE -->
                     <img src="<?php echo '../../../src/uploads/' . $emplacement ?>" alt="photo actuelle" style="width: 100px;">
                 </div>
-                <button type="submit" class="btn btn-success">Confirmer modif ?</button>
-                </form>
+                <!-- Dual Listbox pour les mots clés -->
+                <div class="form-group">
+                    <label for="keywords">Mots clés</label>
+                    <div class="dual-listbox-container d-flex">
+                        <select id="available-keywords" class="form-control" multiple size="8" style="width: 45%;">
+                            <?php
+                            $keywords = sql_select('MOTCLE', 'numMotCle, libMotCle', '1');
+                            foreach ($keywords as $keyword) {
+                                echo '<option value="' . $keyword['numMotCle'] . '">' . $keyword['libMotCle'] . '</option>';
+                            }
+                            ?>
+                        </select>
+                        <div class="d-flex flex-column align-items-center justify-content-center mx-2">
+                            <button type="button" class="btn btn-primary mb-2" onclick="moveKeywords('available-keywords', 'selected-keywords')">→</button>
+                            <button type="button" class="btn btn-primary" onclick="moveKeywords('selected-keywords', 'available-keywords')">←</button>
+                        </div>
+                        <select id="selected-keywords" name="selectedKeywords[]" class="form-control" multiple size="8" style="width: 45%;">
+                            <!-- Les mots clés sélectionnés iront ici -->
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Confirmer</button>
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+    function moveKeywords(fromId, toId) {
+        const fromList = document.getElementById(fromId);
+        const toList = document.getElementById(toId);
+        const selectedOptions = Array.from(fromList.selectedOptions);
+
+        selectedOptions.forEach(option => {
+            toList.appendChild(option);
+        });
+    }
+</script>
