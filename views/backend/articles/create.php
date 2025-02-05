@@ -12,7 +12,8 @@ include '../../../header.php';
         <div class="col-md-12">
             <!-- Form to create a new article -->
             <form action="<?php echo ROOT_URL . '/api/articles/create.php' ?>" method="post" enctype="multipart/form-data">
-                <div class="form-group">
+
+                    <div class="form-group">
                     <label for="title">Titre</label>
                     <input type="text" class="form-control" id="libTitrArt" name="libTitrArt" maxlength="100" placeholder="100 caracteres max" required>
                 </div>
