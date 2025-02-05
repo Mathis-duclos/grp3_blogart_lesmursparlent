@@ -1,6 +1,20 @@
 <?php
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+
 session_start();
 
+sql_connect();
+
+// SELECT `numStat` FROM `MEMBRE` WHERE `pseudoMemb` = "Admin99";
+$is_admin = false;
+if (isset($_SESSION['pseudoMemb'])) {
+  $numStat = sql_select('MEMBRE', 'numStat', "`pseudoMemb` = '".$_SESSION['pseudoMemb']."'");
+  $numStat = $numStat [0]["numStat"];
+  if ($numStat == 1) {
+    $is_admin = true;
+  }
+}
 ?>
 
 
@@ -33,7 +47,14 @@ require_once 'config.php';
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/views/backend/dashboard.php">Admin</a>
+
+            <?php  
+              if ($is_admin) {
+                    echo '<a class="nav-link" href="/views/backend/dashboard.php">Admin</a>';
+                  } 
+                
+              
+            ?>
         </li>
       </ul>
     </div>
@@ -45,9 +66,10 @@ require_once 'config.php';
 
       <?php 
 
-            if(!isset($_SESSION['pseudoMemb']) == $_SESSION['pseudoMemb']){
+            if(isset($_SESSION['pseudoMemb']) ){
 
-            echo '<a class="btn btn-primary m-1" href="/views/backend/security/login.php" role="button">délogin</a>'; 
+            echo '<a class="btn btn-danger m-1" href="/views/backend/security/login.php" role="button">Se déconnecter</a>'; 
+            session_destroy();
             } else { 
             echo '<a class="btn btn-primary m-1" href="/views/backend/security/login.php" role="button">Login</a>';
             echo '<a class="btn btn-dark m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>';
