@@ -15,6 +15,7 @@ $pseudopareil = 0;
 
 $touslesmembres = sql_select('MEMBRE', 'pseudoMemb');
 
+$passMembHash = password_hash($passMemb, PASSWORD_DEFAULT);
 
 
 
@@ -30,7 +31,7 @@ if ($pseudopareil == 0) {
     'MEMBRE',
 
     'pseudoMemb, prenomMemb, nomMemb, eMailMemb, passMemb, accordMemb, numStat',
-    "'$pseudoMemb', '$prenomMemb', '$nomMemb', '$eMailMemb', '$passMemb', '$accordMemb', '3'"
+    "'$pseudoMemb', '$prenomMemb', '$nomMemb', '$eMailMemb', '$passMembHash', '$accordMemb', '3'"
 
     );    header(header: 'Location: ../../../index.php'); 
 ;

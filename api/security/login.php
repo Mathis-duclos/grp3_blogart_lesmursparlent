@@ -24,7 +24,7 @@ foreach ($pseudos as $key => $value) {
 }
 
 foreach ($passwords as $key2 => $value2) {
-        if ($value2['passMemb'] == $_POST['passMemb']) {
+        if (password_verify($_POST['passMemb'], $value2['passMemb'])) {
             $passGood = true;
         }
 }
