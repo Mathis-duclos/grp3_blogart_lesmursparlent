@@ -1,52 +1,39 @@
 <?php
 include '../../../header.php'; // contains the header and call to config.php
 
-//Load all statuts
-$like = sql_select("LIKEART", "*"); 
-?>
-
-<?php
-//$tablo1 = sql_select('MOTCLE', 'numMotCle, libMotCle', '1');
-//$query = "MOTCLE AS MC JOIN  MOTCLEARTICLE AS MCA ON MC.numMotCle = MCA.numMotCle JOIN ARTICLE AS AR ON MCA.numArt = AR.numArt" ;
-//$tablo2 = sql_select($query , "libMotCle", "MCA.numArt = $numArt");
-
-$queryNmMbr = sql_select('LIKEART', 'numMemb',);
-$nomMmbr = $query[0];
-
-
-var_dump($queryNmMbr);
+// Charger tous les likes
+$query = "MEMBRE AS MB JOIN LIKEART AS LKA ON MB.numMemb = LKA.numMemb JOIN ARTICLE AS AR ON LKA.numArt = AR.numArt";
+$tabloLikes = sql_select($query, "MB.numMemb, MB.pseudoMemb, AR.numArt, AR.libTitrArt, AR.libChapoArt, LKA.likeA");
 
 ?>
 
-<!-- Bootstrap default layout to display all statuts in foreach -->
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Membres</h1>
+            <h1>Likes des articles par les membres</h1>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nom du mmbr</th>
-                        <th>Titre Article</th>
-                        <th>Chapô Article</th>
-                        <th>Statut (Liké/Unliké) </th>
+                        <th>Membre</th>
+                        <th>Titre article</th>
+                        <th>Chapô article</th>
+                        <th>Statut (Liké/Unliké)</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($likes as $like){ ?>
+                    <?php foreach($tabloLikes as $unLike) { ?>
                         <tr>
-                            <td><?php echo($like['numMemb']); ?></td>
-                            <td><?php echo($like['prenomMemb']); ?></td>
-                            <td><?php echo($like['nomMemb']); ?></td>
-                            <td><?php echo($like['pseudoMemb']); ?></td>
-                            <td><?php echo($like['eMailMemb']); ?></td>
-                            <td><?php echo($like['accordMemb']); ?></td>
+                            <td><?php echo($unLike['numMemb']); ?></td>
+                            <td><?php echo($unLike['pseudoMemb']); ?></td>
+                            <td><?php echo($unLike['libTitrArt']); ?></td>
+                            <td><?php echo($unLike['libChapoArt']); ?></td>
+                            <td><?php echo($unLike['likeA'] == 1 ? 'Liké' : 'Non liké'); ?></td>
                             <td>
-                                <a href="edit.php?numThem=<?php echo($like['numMemb']); ?>" class="btn btn-primary">Edit</a>
-                                <a href="delete.php?numThem=<?php echo($like['numMemb']); ?>" class="btn btn-danger disabled">Delete</a>
+                                <a href="edit.php?numMemb=<?php echo($unLike['numMemb']); ?>&numArt=<?php echo($unLike['numArt']); ?>" class="btn btn-primary">Edit</a>
+                                <a href="delete.php?numMemb=<?php echo($unLike['numMemb']); ?>&numArt=<?php echo($unLike['numArt']); ?>" class="btn btn-danger">Delete</a>
                             </td>
-                        </tr>   
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>
@@ -55,4 +42,5 @@ var_dump($queryNmMbr);
     </div>
 </div>
 <?php
-include '../../../footer.php'; // contains the footer
+include '../../../footer.php';
+?>
