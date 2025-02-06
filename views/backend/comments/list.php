@@ -62,7 +62,7 @@ $commentsDelLog = sql_select($query, "*", 'DelLogiq = 1');
                             <td><?php echo($commentNoControl['libCom']); ?></td>
                             <td>
                                 <a href="edit.php?numThem=<?php echo($commentNoControl['numCom']); ?>" class="btn btn-primary">Control</a>
-                                <a href="delete.php?numThem=<?php echo($commentNoControl['numCom']); ?>" class="btn btn-primary disabled">Edit</a>
+                                <a href="delete.php?numThem=<?php echo($commentNoControl['numCom']); ?>" class="btn btn-warning disabled">Edit</a>
                             </td>
                         </tr>   
                     <?php } ?>
@@ -95,7 +95,7 @@ $commentsDelLog = sql_select($query, "*", 'DelLogiq = 1');
                             <td><?php echo($commentControl['attModOK']); ?></td>
                             <td><?php echo($commentControl['notifComKOAff']); ?></td>
                             <td>
-                                <a href="delete.php?numThem=<?php echo($commentControl['numCom']); ?>" class="btn btn-primary disabled">Edit</a>
+                                <a href="delete.php?numThem=<?php echo($commentControl['numCom']); ?>" class="btn btn-warning disabled">Edit</a>
                             </td>
                         </tr>   
                     <?php } ?>
@@ -128,7 +128,7 @@ $commentsDelLog = sql_select($query, "*", 'DelLogiq = 1');
                             <td><?php echo($commentDelLog['attModOK']); ?></td>
                             <td><?php echo($commentDelLog['notifComKOAff']); ?></td>
                             <td>
-                                <a href="delete.php?numThem=<?php echo($commentDelLog['numCom']); ?>" class="btn btn-primary disabled">Edit</a>
+                                <a href="delete.php?numThem=<?php echo($commentDelLog['numCom']); ?>" class="btn btn-warning disabled">Edit</a>
                             </td>
                         </tr>   
                     <?php } ?>
