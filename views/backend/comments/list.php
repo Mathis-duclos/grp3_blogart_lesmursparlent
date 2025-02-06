@@ -45,7 +45,7 @@ $commentsDelLog = sql_select($query, "*", 'DelLogiq = 1');
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Ttitre Article</th>
+                        <th>Titre Article</th>
                         <th>Pseudo</th>
                         <th>Date</th>
                         <th>Contenu</th>
@@ -61,7 +61,7 @@ $commentsDelLog = sql_select($query, "*", 'DelLogiq = 1');
                             <td><?php echo($commentNoControl['dtCreaCom']); ?></td>
                             <td><?php echo($commentNoControl['libCom']); ?></td>
                             <td>
-                                <a href="edit.php?numThem=<?php echo($commentNoControl['numCom']); ?>" class="btn btn-primary">Control</a>
+                                <a href="control.php?numCom=<?php echo($commentNoControl['numCom']); ?>" class="btn btn-primary">Control</a>
                                 <a href="delete.php?numThem=<?php echo($commentNoControl['numCom']); ?>" class="btn btn-warning disabled">Edit</a>
                             </td>
                         </tr>   
