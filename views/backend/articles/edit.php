@@ -15,6 +15,16 @@ $plSt2 = sql_select('ARTICLE', 'libSsTitr2Art', "numArt = $numArt")[0]['libSsTit
 $plP3 = sql_select('ARTICLE', 'parag3Art', "numArt = $numArt")[0]['parag3Art'];
 $plCl = sql_select('ARTICLE', 'libConclArt', "numArt = $numArt")[0]['libConclArt'];
 
+$tablo1 = sql_select('MOTCLE', 'numMotCle, libMotCle', '1');
+$query = "MOTCLE AS MC JOIN  MOTCLEARTICLE AS MCA ON MC.numMotCle = MCA.numMotCle JOIN ARTICLE AS AR ON MCA.numArt = AR.numArt" ;
+$tablo2 = sql_select($query , "libMotCle", "MCA.numArt = $numArt");
+// SELECT libMotCle
+// FROM MOTCLE  
+// INNER JOIN MOTCLEARTICLE ON MOTCLE.numMotCle = MOTCLEARTICLE.numMotCle 
+// INNER JOIN ARTICLE ON MOTCLEARTICLE.numArt = ARTICLE.numArt
+// WHERE  WHERE MOTCLEARTICLE.numArt = 44
+
+
 ?>
 
 <!-- Bootstrap form to create a new statut -->
@@ -101,8 +111,7 @@ $plCl = sql_select('ARTICLE', 'libConclArt', "numArt = $numArt")[0]['libConclArt
                     <div class="dual-listbox-container d-flex">
                         <select id="available-keywords" class="form-control" multiple size="8" style="width: 45%;">
                             <?php
-                            $keywords = sql_select('MOTCLE', 'numMotCle, libMotCle', '1');
-                            foreach ($keywords as $keyword) {
+                            foreach ($tablo1 as $keyword) {
                                 echo '<option value="' . $keyword['numMotCle'] . '">' . $keyword['libMotCle'] . '</option>';
                             }
                             ?>
@@ -114,14 +123,7 @@ $plCl = sql_select('ARTICLE', 'libConclArt', "numArt = $numArt")[0]['libConclArt
                         <select id="selected-keywords" name="selectedKeywords[]" class="form-control" multiple size="8" style="width: 45%;">
                             <!-- Les mots clés sélectionnés iront ici -->
                             <?php
-                            $query = "MOTCLE AS MC JOIN  MOTCLEARTICLE AS MCA ON MC.numMotCle = MCA.numMotCle JOIN ARTICLE AS AR ON MCA.numArt = AR.numArt" ;
-                            $selected_keywords = sql_select($query , "libMotCle", "MCA.numArt = $numArt");
-                            // SELECT libMotCle
-                            // FROM MOTCLE  
-                            // INNER JOIN MOTCLEARTICLE ON MOTCLE.numMotCle = MOTCLEARTICLE.numMotCle 
-                            // INNER JOIN ARTICLE ON MOTCLEARTICLE.numArt = ARTICLE.numArt
-                            // WHERE  WHERE MOTCLEARTICLE.numArt = 44
-                            foreach ($selected_keywords as $keyword) {
+                            foreach ($tablo2 as $keyword) {
                                 echo '<option value="' . $keyword['numMotCle'] . '">' . $keyword['libMotCle'] . '</option>';
                             }
                             ?>
