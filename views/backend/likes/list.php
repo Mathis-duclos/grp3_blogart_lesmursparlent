@@ -41,6 +41,3 @@ $tabloLikes = sql_select($query, "MB.numMemb, MB.pseudoMemb, AR.numArt, AR.libTi
         </div>
     </div>
 </div>
-<?php
-include '../../../footer.php';
-?>
