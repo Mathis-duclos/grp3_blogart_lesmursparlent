@@ -28,7 +28,9 @@ $commentsNoControl = sql_select($query, "*", 'numCom = ' . $numCom)[0];
     <div class="row">
         <div class="col-md-12">
             <table class="table table-striped">
-                <tbody>
+                
+            <form action="<?php echo ROOT_URL . '/api/comments/control.php?numCom='. $numCom ?>" method="post" enctype="multipart/form-data">
+                <tbody> 
 
                 <h3> Titre de l'Article</h3>
                         <p> <?php echo $commentsNoControl['libTitrArt']; ?> </p>
@@ -62,12 +64,13 @@ $commentsNoControl = sql_select($query, "*", 'numCom = ' . $numCom)[0];
                 <br>
 
                 <tr>
-                    <a href="../../../api/comments/control.php" class="btn btn-warning">Control</a>
+                    <button href="../../../api/comments/control.php" class="btn btn-warning">Control</button>
                     <a href="list.php" class="btn btn-primary">List</a>
                 </tr>
 
                     
                 </tbody>
+                </form>
             </table>
         </div>
         </div>

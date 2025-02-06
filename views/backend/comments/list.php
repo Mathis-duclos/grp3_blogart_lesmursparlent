@@ -14,8 +14,8 @@ $query = "COMMENT CM INNER JOIN ARTICLE AR ON CM.numArt = AR.numArt INNER JOIN M
 
 //SELECT * FROM `COMMENT` WHERE `attModOK` = 0;
 
-$commentsNoControl = sql_select($query, "*", 'AttModOK = 0 AND `delLogiq` = 0');
-$commentsControl = sql_select($query, "*", 'AttModOK = 1');
+$commentsNoControl = sql_select($query, "*", 'dtModCom IS NULL');
+$commentsControl = sql_select($query, "*", 'dtModCom IS NOT NULL');
 $commentsDelLog = sql_select($query, "*", 'DelLogiq = 1');
 
 
