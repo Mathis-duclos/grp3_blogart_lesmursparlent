@@ -60,7 +60,7 @@ $commentsNoControl = sql_select($query, "*", 'numCom = ' . $numCom)[0];
                 <div class="form-group">
                     
                     <div class="form-check">
-                        <input type="radio" id="attModOK" name="attModOK" value="1" class="form-check-input" >
+                        <input type="radio" id="attModOK" name="attModOK" value="1" class="form-check-input" required >
                         <label class="form-check-label" for="attModOK1">Oui</label>
                     </div>
                     <div class="form-check">
@@ -69,24 +69,8 @@ $commentsNoControl = sql_select($query, "*", 'numCom = ' . $numCom)[0];
                     </div>
                 <br>
                 <h3> Raison du refus </h3>
-                <p> A remplir seulement si le commentaire est refusé </p>
-                <textarea class="form-control" id="notifComKOAff" name="notifComKOAff" maxlength="1200" rows="6" cols="6"></textarea>
-                
-                <br>
-
-                <h3> En tant que modérateur, je souhaite que le post ne soit pas/plus affiché (suppression logique) : </h3>
-                
-                <div class="form-group">
-                    
-                    <div class="form-check">
-                        <input type="radio" id="delLogiq" name="delLogiq" value="1" class="form-check-input" >
-                        <label class="form-check-label" for="delLogiq">Oui</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="delLogiq" name="delLogiq" value="0" class="form-check-input">
-                        <label class="form-check-label" for="delLogiq">Non</label>
-                    </div>
-
+                <textarea class="form-control" id="libCom" name="libCom" maxlength="1200" rows="6" cols="6" disabled ><?php  echo ($commentsNoControl['notifComKOAff']) ?> </textarea>
+            
                 <br>
                 <p> Date de suppression Logique : </p>
                 <p> <?php echo ($commentsNoControl['dtDelLogCom']); ?> </p>

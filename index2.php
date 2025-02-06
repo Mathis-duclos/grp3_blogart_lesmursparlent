@@ -11,29 +11,15 @@ sql_connect();
     echo $_SESSION['pseudoMemb'];
 }*/
 
+$numArt = 1 ;
+$urlImg = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt")[0]['urlPhotArt'];
+$libTitrArt = sql_select('ARTICLE', 'libTitrArt', "numArt = $numArt")[0]['libTitrArt'];
+$libChapoArt = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt")[0]['libChapoArt'];
 
-
-$article = sql_select("ARTICLE", "*", null, null, "numArt DESC", "2");
-
-
-//var_dump($article);
-
-
-
-
-
-
-//if (count($article) == 2) {
-//    $maxNumArt = max($article[0]['numArt'], $article[1]['numArt']);
-//    echo "Le plus grand numArt parmi les deux est : " . $maxNumArt;
-//} else {
-//    echo "Moins de deux articles trouvés.";
-//}
-
-//$urlImg = sql_select('ARTICLE', 'urlPhotArt', "numArt = $article")[0]['urlPhotArt'];
-//$libTitrArt = sql_select('ARTICLE', 'libTitrArt', "numArt = $article")[0]['libTitrArt'];
-//$libChapoArt = sql_select('ARTICLE', 'libChapoArt', "numArt = $article")[0]['libChapoArt'];
-
+$numArt2 = 2 ;
+$urlImg2 = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt2")[0]['urlPhotArt'];
+$libTitrArt2 = sql_select('ARTICLE', 'libTitrArt', "numArt = $numArt2")[0]['libTitrArt'];
+$libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['libChapoArt'];
 ?>
 
 
@@ -64,34 +50,28 @@ $article = sql_select("ARTICLE", "*", null, null, "numArt DESC", "2");
         </div>
         <div class="a-la-une-content">
             <div class="a-la-une-cards">
-                <!-- CARTE 1 -->
-        
                 <div class="a-la-une-card">
-                    <a href="/views/frontend/articles/article1.php"><img class="card-image" src="/src/uploads/<?php echo ($article[0]['urlPhotArt']); ?>"></a>
+                    <a href="/views/frontend/articles/article1.php"><img class="card-image" src="/src/uploads/<?php echo $urlImg; ?>"></a>
                     <div class="card-texte">
-                        <p class="bold"><?php echo $article[0]['libTitrArt']; ?></p><br>
-                        <p><?php echo $article[0]['libChapoArt']; ?></p><br>
+                        <p class="bold"><?php echo $libTitrArt; ?></p><br>
+                        <p><?php echo $libChapoArt; ?></p><br>
                     </div>
                     <a href="/views/frontend/articles/article1.php"><div class="bouton">
                         <span>Voir l'article</span>
                         <img class=bouton-image src="src/svg/fleche-bouton.svg">
                     </div></a>
                 </div>
-
-                <!-- CARTE 2 -->
                 <div class="a-la-une-card">
-                    <a href="/views/frontend/articles/article2.php"><img class="card-image" src="/src/uploads/<?php echo $article[1]['urlPhotArt']; ?>"></a>
+                    <a href="/views/frontend/articles/article2.php"><img class="card-image" src="/src/uploads/<?php echo $urlImg2; ?>"></a>
                     <div class="card-texte">
-                        <p class="bold"><?php echo $article[1]['libTitrArt']; ?></p><br>
-                        <p><?php echo $article[1]['libChapoArt']; ?></p><br>
+                        <p class="bold"><?php echo $libTitrArt2; ?></p><br>
+                        <p><?php echo $libChapoArt2; ?></p><br>
                     </div>
                     <a href="/views/frontend/articles/article2.php"><div class="bouton">
                         <span>Voir l'article</span>
                         <img class=bouton-image src="src/svg/fleche-bouton.svg">
                     </div></a>
                 </div>
-
-
             </div>
         </div>
     </section>

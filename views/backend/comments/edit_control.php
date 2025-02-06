@@ -57,7 +57,7 @@ $commentsNoControl = sql_select($query, "*", 'numCom = ' . $numCom)[0];
                 <div class="form-group">
                     
                     <div class="form-check">
-                        <input type="radio" id="attModOK" name="attModOK" value="1" class="form-check-input" >
+                        <input type="radio" id="attModOK" name="attModOK" value="1" class="form-check-input" required>
                         <label class="form-check-label" for="attModOK1">Oui</label>
                     </div>
                     <div class="form-check">
@@ -76,7 +76,7 @@ $commentsNoControl = sql_select($query, "*", 'numCom = ' . $numCom)[0];
                 <div class="form-group">
                     
                     <div class="form-check">
-                        <input type="radio" id="delLogiq" name="delLogiq" value="1" class="form-check-input" >
+                        <input type="radio" id="delLogiq" name="delLogiq" value="1" class="form-check-input" required>
                         <label class="form-check-label" for="delLogiq">Oui</label>
                     </div>
                     <div class="form-check">
