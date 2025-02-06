@@ -10,7 +10,6 @@ function sql_delete($table, $where){
 
     try{
         $DB->beginTransaction();
-
         //prepare query for PDO
         $query = "DELETE FROM $table WHERE $where;";
         $request = $DB->prepare($query);
