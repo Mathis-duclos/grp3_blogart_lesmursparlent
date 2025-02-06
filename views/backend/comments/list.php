@@ -62,7 +62,7 @@ $commentsDelLog = sql_select($query, "*", 'DelLogiq = 1');
                             <td><?php echo($commentNoControl['libCom']); ?></td>
                             <td>
                                 <a href="control.php?numCom=<?php echo($commentNoControl['numCom']); ?>" class="btn btn-primary">Control</a>
-                                <a href="delete.php?numThem=<?php echo($commentNoControl['numCom']); ?>" class="btn btn-warning disabled">Edit</a>
+                                <a href="edit.php?numCom=<?php echo($commentNoControl['numCom']); ?>" class="btn btn-warning ">Edit</a>
                             </td>
                         </tr>   
                     <?php } ?>
@@ -95,7 +95,7 @@ $commentsDelLog = sql_select($query, "*", 'DelLogiq = 1');
                             <td><?php echo($commentControl['attModOK']); ?></td>
                             <td><?php echo($commentControl['notifComKOAff']); ?></td>
                             <td>
-                                <a href="delete.php?numThem=<?php echo($commentControl['numCom']); ?>" class="btn btn-warning disabled">Edit</a>
+                                <a href="edit_control.php?numCom=<?php echo($commentControl['numCom']); ?>" class="btn btn-warning">Edit</a>
                             </td>
                         </tr>   
                     <?php } ?>
@@ -128,7 +128,7 @@ $commentsDelLog = sql_select($query, "*", 'DelLogiq = 1');
                             <td><?php echo($commentDelLog['attModOK']); ?></td>
                             <td><?php echo($commentDelLog['notifComKOAff']); ?></td>
                             <td>
-                                <a href="delete.php?numThem=<?php echo($commentDelLog['numCom']); ?>" class="btn btn-warning disabled">Edit</a>
+                                <a href="edit_suplog.php?numCom=<?php echo($commentDelLog['numCom']); ?>" class="btn btn-warning ">Edit</a>
                             </td>
                         </tr>   
                     <?php } ?>
@@ -160,7 +160,7 @@ $commentsDelLog = sql_select($query, "*", 'DelLogiq = 1');
                             <td><?php echo($commentDelLog['attModOK']); ?></td>
                             <td><?php echo($commentDelLog['notifComKOAff']); ?></td>
                             <td>
-                                <a href="delete.php?numThem=<?php echo($commentDelLog['numCom']); ?>" class="btn btn-danger disabled">Delete</a>
+                                <a href="delete.php?numCom=<?php echo($commentDelLog['numCom']); ?>" class="btn btn-danger ">Delete</a>
                             </td>
                         </tr>   
                     <?php } ?>
