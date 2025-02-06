@@ -1,0 +1,51 @@
+.a-la-une {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1vw;
+}
+
+.card-image {
+    max-width: 30vw;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%); /* Firefox */ 
+    transition:all 0.3s;
+}
+
+.card-texte {
+    max-width: 30vw;
+}
+
+.a-la-une-cardshover .card-image{
+    -webkit-filter: grayscale(0%); /* Chrome, Safari, Opera */
+    filter: grayscale(0%); /* Firefox */
+    transition:all 0.3s;
+}
+
+.a-la-une-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
+}
+
+.a-la-une-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.a-la-une-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    background-color: #F6F6F6;
+    border-radius: 15px;
+    padding: 4vw 2vw;
+}
