@@ -16,7 +16,7 @@ $commentsNoControl = sql_select($query, "*", 'numCom = ' . $numCom)[0];
     <div class="row">
         <div class="col-md-12"> 
 
-        <h1>Commentaire contrôlé : modifier</h1>   
+        <h1>Modération commentaire : suppression logique</h1>   
 
         </div>
     </div> 
@@ -28,15 +28,12 @@ $commentsNoControl = sql_select($query, "*", 'numCom = ' . $numCom)[0];
         <div class="col-md-12">
             <table class="table table-striped">
                 
-            <form action="<?php echo ROOT_URL . '/api/comments/delete.php?numCom='. $numCom ?>" method="post" enctype="multipart/form-data">
-            
+            <form action="<?php echo ROOT_URL . '/api/comments/update.php?numCom='. $numCom ?>" method="post" enctype="multipart/form-data">
                 <tbody> 
 
                 <h3> Titre de l'Article</h3>
                         <p> <?php echo $commentsNoControl['libTitrArt']; ?> </p>
                 <br>
-                <p> ID de l'article : </p>
-                <input id="numCom" name="numCom" class="form-control" type="text" value="<?php echo($numCom); ?>" readonly="readonly" />
                 <h3> Informations commentaires</h3>
                 <p> Nom d'utilisateur : </p>
                 <p> <?php echo ($commentsNoControl['pseudoMemb']); ?> </p>
@@ -87,13 +84,8 @@ $commentsNoControl = sql_select($query, "*", 'numCom = ' . $numCom)[0];
                         <label class="form-check-label" for="delLogiq">Non</label>
                     </div>
 
-                <br>
-                <p> Date de suppression Logique : </p>
-                <p> <?php echo ($commentsNoControl['dtDelLogCom']); ?> </p>
-                <br>
-
                 <tr>
-                    <button href="../../../api/comments/update.php" class="btn btn-danger">Supprimer défitivement</button>
+                    <button href="../../../api/comments/update.php" class="btn btn-warning">Confirmer Edit</button>
                     <a href="list.php" class="btn btn-primary">List</a>
                 </tr>
 
