@@ -67,12 +67,12 @@ $article = sql_select("ARTICLE", "*", null, null, "numArt DESC", "2");
                 <!-- CARTE 1 -->
         
                 <div class="a-la-une-card">
-                    <a href="/views/frontend/articles/article1.php"><img class="card-image" src="/src/uploads/<?php echo ($article[0]['urlPhotArt']); ?>"></a>
+                    <a href="/views/frontend/articles/article.php?numArt=<?php echo($article[0]['numArt']); ?>"> <img class="card-image" src="/src/uploads/<?php echo ($article[0]['urlPhotArt']); ?>"></a>
                     <div class="card-texte">
                         <p class="bold"><?php echo $article[0]['libTitrArt']; ?></p><br>
                         <p><?php echo $article[0]['libChapoArt']; ?></p><br>
                     </div>
-                    <a href="/views/frontend/articles/article1.php"><div class="bouton">
+                    <a href="/views/frontend/articles/article.php?numArt=<?php echo($article[0]['numArt']); ?>"><div class="bouton">
                         <span>Voir l'article</span>
                         <img class=bouton-image src="src/svg/fleche-bouton.svg">
                     </div></a>
@@ -80,12 +80,12 @@ $article = sql_select("ARTICLE", "*", null, null, "numArt DESC", "2");
 
                 <!-- CARTE 2 -->
                 <div class="a-la-une-card">
-                    <a href="/views/frontend/articles/article2.php"><img class="card-image" src="/src/uploads/<?php echo $article[1]['urlPhotArt']; ?>"></a>
+                    <a href="/views/frontend/articles/article.php?numArt=<?php echo($article[1]['numArt']); ?>"> <img class="card-image" src="/src/uploads/<?php echo $article[1]['urlPhotArt']; ?>"></a>
                     <div class="card-texte">
                         <p class="bold"><?php echo $article[1]['libTitrArt']; ?></p><br>
                         <p><?php echo $article[1]['libChapoArt']; ?></p><br>
                     </div>
-                    <a href="/views/frontend/articles/article2.php"><div class="bouton">
+                    <a href="/views/frontend/articles/article.php?numArt=<?php echo($article[1]['numArt']); ?>"> <div class="bouton">
                         <span>Voir l'article</span>
                         <img class=bouton-image src="src/svg/fleche-bouton.svg">
                     </div></a>
