@@ -25,7 +25,6 @@ $articles = sql_select("ARTICLE", "numArt, libTitrArt");?>
                         <?php } ?>
                     </select>
                 </div>
-
                 <!-- Liste déroulante pour les articles -->
                 <div class="form-group mt-3">
                     <label for="numArt">Sélectionnez un article</label>
@@ -38,7 +37,6 @@ $articles = sql_select("ARTICLE", "numArt, libTitrArt");?>
                         <?php } ?>
                     </select>
                 </div>
-
                 <!-- Boutons de validation -->
                 <div class="form-group mt-4">
                     <a href="list.php" class="btn btn-primary">Retour à la liste</a>
