@@ -1,0 +1,152 @@
+h1 {
+    font-family: 'Lemon Milk';
+}
+
+h2 {
+    font-family: 'Lemon Milk';
+    font-size: 14px;
+}
+
+p {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 24px;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background-color: #711711;
+    color: white;
+}
+
+label {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+}
+
+input {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.bold {
+    font-family: 'Inter';
+    font-weight: 600;
+}
+
+.a-la-une-cards a {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+}
+
+.logo {
+    width: 5vw;
+    height: auto;
+}
+
+.nav a {
+    color: black; 
+    text-decoration: none; 
+}
+
+.nav a:hover {
+    color:#711711;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Lemon Milk';
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+.header-left {
+    margin-left: 5vw;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    flex-direction: row;
+}
+
+.header-right {
+    margin-right: 5vw;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    flex-direction: row;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-form-search {
+    border: none;
+    outline: none;
+    background-color: #F6F6F6;
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+.bouton:hover .bouton-image {
+    transform: translate(3px, -3px);}
+
+.bouton-image {
+    transition: 0.3s ease;
+}
+
+.bouton:hover .bouton {
+    padding: 0.5vw 18px 0.5vw 15px;
+}
+
+.bouton {
+    transition: 0.3s ease;
+}
+
+.custom-form {
+    width: 22.5vw;
+    background-color: #F6F6F6; /* Fond gris clair */
+    border: none; /* Supprime les contours */
+    outline: none; /* Supprime le contour bleu lorsqu'on clique */
+    padding: 10px; /* Ajoute un peu d'espace intérieur */
+    border-radius: 15px; /* Coins légèrement arrondis */
+}
+
+.custom-form-message {
+    width: 50vw;
+    background-color: #F6F6F6; /* Fond gris clair */
+    border: none; /* Supprime les contours */
+    outline: none; /* Supprime le contour bleu lorsqu'on clique */
+    padding: 10px; /* Ajoute un peu d'espace intérieur */
+    border-radius: 15px; /* Coins légèrement arrondis */
+}
+
+
+.mb-3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-image {
+    max-width: 100%;
+    height: auto;
+}

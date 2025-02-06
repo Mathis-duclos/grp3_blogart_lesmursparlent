@@ -1,65 +1,51 @@
 <?php 
+
 require_once 'header.php';
 sql_connect();
 
-/*if ( isset($_GET["errorpseudo"]) && $_GET["errorpseudo"] == 1) {
-    echo "Pseudo déjà utilisé : veuillez recommencer";
-}*/
-
-/*if ( isset($_GET["login"]) && $_GET["login"] == 1) {
-    echo "Vous êtes connectés inchalla ";
-    echo $_SESSION['pseudoMemb'];
-}*/
 
 $numArt = 1 ;
-$urlImg = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt")[0];
+$urlImg = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt")[0]['urlPhotArt'];
 $libTitrArt = sql_select('ARTICLE', 'libTitrArt', "numArt = $numArt")[0]['libTitrArt'];
 $libChapoArt = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt")[0]['libChapoArt'];
 
 $numArt2 = 2 ;
-$urlImg2 = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt2")[0];
+$urlImg2 = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt2")[0]['urlPhotArt'];
 $libTitrArt2 = sql_select('ARTICLE', 'libTitrArt', "numArt = $numArt2")[0]['libTitrArt'];
 $libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['libChapoArt'];
 ?>
 
-
 <main>
-    <section class="top-content">
-        <img src="src/images/top-content-image3.png">
-    </section>
     <section class="a-la-une">
-        <div class="ligne">
-            <hr width="90%" color="black">
-        </div>
         <div class="titre">
-            <h2>A LA UNE</h2>
+            <h2>ARTICLES</h2>
             <img src="src/svg/fleche-titre.svg">
         </div>
         <div class="a-la-une-content">
-            <div class="a-la-une-cards">
-                <div class="a-la-une-card">
-                    <a href="/views/frontend/articles/article1.php"><img class="card-image" src="/src/uploads/<?php echo $urlImg; ?>"></a>
-                    <div class="card-texte">
-                        <p class="bold"><?php echo $libTitrArt; ?></p><br>
-                        <p><?php echo $libChapoArt; ?></p><br>
-                    </div>
-                    <a href="/views/frontend/articles/article1.php"><div class="bouton">
-                        <span class=bouton>Voir l'article</span>
-                        <img class=bouton-image src="src/svg/fleche-bouton.svg">
-                    </div></a>
+        <div class="a-la-une-cards">
+            <div class="a-la-une-card">
+                <a href="/views/frontend/articles/article1.php"><img class="card-image" src="/src/uploads/<?php echo $urlImg; ?>"></a>
+                <div class="card-texte">
+                    <p class="bold"><?php echo $libTitrArt; ?></p><br>
+                    <p><?php echo $libChapoArt; ?></p><br>
                 </div>
-                <div class="a-la-une-card">
-                    <a href="/views/frontend/articles/article2.php"><img class="card-image" src="/src/uploads/<?php echo $urlImg2; ?>"></a>
-                    <div class="card-texte">
-                        <p class="bold"><?php echo $libTitrArt2; ?></p><br>
-                        <p><?php echo $libChapoArt2; ?></p><br>
-                    </div>
-                    <a href="/views/frontend/articles/article2.php"><div class="bouton">
-                        <span class=bouton>Voir l'article</span>
-                        <img class=bouton-image src="src/svg/fleche-bouton.svg">
-                    </div></a>
-                </div>
+                <a href="/views/frontend/articles/article1.php"><div class="bouton">
+                    <span class=bouton>Voir l'article</span>
+                    <img class=bouton-image src="src/svg/fleche-bouton.svg">
+                </div></a>
             </div>
+            <div class="a-la-une-card">
+                <a href="/views/frontend/articles/article2.php"><img class="card-image" src="/src/uploads/<?php echo $urlImg2; ?>"></a>
+                <div class="card-texte">
+                    <p class="bold"><?php echo $libTitrArt2; ?></p><br>
+                    <p><?php echo $libChapoArt2; ?></p><br>
+                </div>
+                <a href="/views/frontend/articles/article2.php"><div class="bouton">
+                    <span class=bouton>Voir l'article</span>
+                    <img class=bouton-image src="src/svg/fleche-bouton.svg">
+                </div></a>
+            </div>
+        </div>
         </div>
     </section>
     <section class="newsletter">

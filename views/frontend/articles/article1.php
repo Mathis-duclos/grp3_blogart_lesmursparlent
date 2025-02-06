@@ -20,10 +20,6 @@ $plCl = sql_select('ARTICLE', 'libConclArt', "numArt = $numArt")[0]['libConclArt
 
 
 var_dump($libTitrArt);
-
-
-
-
 ?>
 
 
@@ -185,9 +181,7 @@ var_dump($libTitrArt);
                 </div>
             </div>
         </div>
-        <section class="footer">
-            <img class="footer-image" src="/src/images/footer-image.png">
-        </section>
+        <?php require_once 'footer.php'; ?>
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
