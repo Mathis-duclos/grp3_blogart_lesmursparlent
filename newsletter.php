@@ -1,14 +1,14 @@
 <?php
-include '../../../header.php';
+include './header.php';
 ?> 
 
 <main>
     <section class="register">
         <div class="titre">
-            <h1>Inscription</h1>
+            <h1>Inscription à la newsletter</h1>
             <img class=bouton-image src="/src/svg/fleche-titre.svg">
         </div>
-        <form action="<?php echo ROOT_URL . '/api/security/login.php' ?>" method="post" onsubmit="return checkForm()" class="form-register">
+        <form action="<?php echo ROOT_URL . '/api/security/login.php' ?>" method="post" onsubmit="return checkForm()">
             <div data-mdb-input-init class="form-outline mb-4">
                 <label for="pseudoMemb" class="form-label">Votre pseudo :</label>
                 <input placeholder="ex: JM34" type="pseudo" id="pseudoMemb" name="pseudoMemb" maxlength="100" class="custom-form-pseudo" />
@@ -36,22 +36,8 @@ include '../../../header.php';
                     <span id="emailError" class="error-message text-danger"></span>
                 </div>
             </div>
-            <div class="form-row">
-                <div data-mdb-input-init class="form-outline mb-4">
-                    <label for="passMemb">Votre mot de passe :</label>
-                    <input type="password" class="custom-form-login" id="passMemb" name="passMemb" maxlength="100" required>
-                    <button type="button" id="togglePassword" class="btn btn-secondary mt-2">Afficher</button>
-                    <span id="passwordError" class="error-message text-danger"></span>
-                </div>
-                <div data-mdb-input-init class="form-outline mb-4">
-                    <label for="confPassMemb">Confirmez votre mot de passe :</label>
-                    <input type="password" class="custom-form-login" id="confPassMemb" name="confPassMemb" maxlength="100" required>
-                    <button type="button" id="togglePassword" class="btn btn-secondary mt-2">Afficher</button>
-                    <span id="passwordConfirmError" class="error-message text-danger"></span>
-                </div>
-            </div>
             <div data-mdb-input-init class="form-outline mb-4">
-                <label>Acceptez-vous nos mentions légales ?</label>
+                <label>Recevoir les notifications</label>
                 <div class="form-row">
                     <div class="form-check">
                         <input type="radio" id="accord1" name="accordMemb" value="1" class="form-check-input" required>
@@ -65,7 +51,6 @@ include '../../../header.php';
                 <span id="accordError" class="error-message text-danger"></span>
             </div>
             <button  type="button" data-mdb-button-init data-mdb-ripple-init class="custom-button">S'inscrire</button>
-            <p>Déjà membre ?<p><button  type="button" data-mdb-button-init data-mdb-ripple-init class="custom-button" a href="/views/backend/security/login.php">Se connecter</button></a>
         </form>
     </section>
     <?php require_once 'footer.php'; ?>

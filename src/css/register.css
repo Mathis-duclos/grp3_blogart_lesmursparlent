@@ -1,5 +1,5 @@
 
-form {
+.form-register {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,7 +8,7 @@ form {
     font-weight: 400;
     font-size: 20px;
     background-color: #F6F6F6;
-    padding: 4vw 2vw;
+    padding: 4vw 7vw;
     border-radius: 15px;
     max-width: 50vw;
     margin: 40px auto 0 auto;
@@ -17,6 +17,7 @@ form {
 .form-row {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 3vw;
 }
 
@@ -72,4 +73,10 @@ form a:hover {
     flex-direction: column;
     align-items: center;
     margin: 100px 0px 100px 0;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }

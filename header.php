@@ -41,7 +41,7 @@ require_once 'config.php';
     <link rel="stylesheet" href="/src/css/register.css">
     <link rel="stylesheet" href="/src/css/login.css">
     <link rel="stylesheet" href="/src/css/articles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
+    <link rel="stylesheet" href="./src/cookie-banner.css">
     <link rel="icon" type="image/png" href="/src/svg/favicon.svg">
     <!-- Bootstrap CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -72,17 +72,22 @@ require_once 'config.php';
                 </div>
                 <?php 
                 if(isset($_SESSION['pseudoMemb']) ){
-                echo '<a class="btn btn-danger m-1" href="/api/security/disconnect.php" role="button">Se déconnecter</a>'; 
+                echo '<a class="bouton" href="/api/security/disconnect.php" role="button">
+                          <div>
+                              <span class=bouton>Déconnexion</span>
+                              <img class=bouton-image src="/src/svg/fleche-bouton.svg">
+                          </div>
+                      </a>'; 
                 } else { 
                 echo '<a href="/views/backend/security/login.php" role="button">
                           <div class="bouton">
-                              <span class=bouton>Connexion</span>
+                              <span>Connexion</span>
                               <img class=bouton-image src="/src/svg/fleche-bouton.svg">
                           </div>
                       </a>';
                 echo '<a href="/views/backend/security/signup.php" role="button">
                           <div class="bouton">
-                              <span class=bouton>Inscription</span>
+                              <span >Inscription</span>
                               <img class=bouton-image src="/src/svg/fleche-bouton.svg">
                           </div>
                       </a>';

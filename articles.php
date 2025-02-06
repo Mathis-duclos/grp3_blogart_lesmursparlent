@@ -4,30 +4,35 @@ require_once 'header.php';
 sql_connect();
 
 
-$numArt = 1 ;
-$urlImg = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt")[0]['urlPhotArt'];
-$libTitrArt = sql_select('ARTICLE', 'libTitrArt', "numArt = $numArt")[0]['libTitrArt'];
-$libChapoArt = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt")[0]['libChapoArt'];
+$numArt1 = 1 ;
+$Art1 = sql_select('ARTICLE', '*', "numArt = $numArt1")[0];
+$urlImg1 = $Art1['urlPhotArt'];
+$libTitrArt1 = $Art1['libTitrArt'];
+$libChapoArt1 = $Art1['libChapoArt'];
 
 $numArt2 = 2 ;
-$urlImg2 = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt2")[0]['urlPhotArt'];
-$libTitrArt2 = sql_select('ARTICLE', 'libTitrArt', "numArt = $numArt2")[0]['libTitrArt'];
-$libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['libChapoArt'];
+$Art2 = sql_select('ARTICLE', '*', "numArt = $numArt2")[0];
+$urlImg2 = $Art2['urlPhotArt'];
+$libTitrArt2 = $Art2['libTitrArt'];
+$libChapoArt2 = $Art2['libChapoArt'];
 ?>
 
 <main>
-    <section class="a-la-une">
+    <section class="a-la-une articles">
         <div class="titre">
             <h2>ARTICLES</h2>
             <img src="src/svg/fleche-titre.svg">
         </div>
+        <div class="sous-titre">
+            <p>Découvrez nos articles sur la Seconde Guerre mondiale à Bordeaux : événements clés, témoignages et lieux historiques qui ont marqué cette période dans la ville.</p>
+        </div>
         <div class="a-la-une-content">
         <div class="a-la-une-cards">
             <div class="a-la-une-card">
-                <a href="/views/frontend/articles/article1.php"><img class="card-image" src="/src/uploads/<?php echo $urlImg; ?>"></a>
+                <a href="/views/frontend/articles/article1.php"><img class="card-image" src="/src/uploads/<?php echo $urlImg1; ?>"></a>
                 <div class="card-texte">
-                    <p class="bold"><?php echo $libTitrArt; ?></p><br>
-                    <p><?php echo $libChapoArt; ?></p><br>
+                    <p class="bold"><?php echo $libTitrArt1; ?></p><br>
+                    <p><?php echo $libChapoArt1; ?></p><br>
                 </div>
                 <a href="/views/frontend/articles/article1.php"><div class="bouton">
                     <span class=bouton>Voir l'article</span>
@@ -60,7 +65,7 @@ $libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['li
             <div class="newsletter-texte">
                 <p>Recevez des récits inédits sur la Seconde Guerre mondiale à Bordeaux : témoignages, faits marquants et analyses. <br>Ne laissez pas l’Histoire s’effacer, abonnez-vous !</p>
             </div>
-            <a href="#"><div class="bouton">
+            <a href="/newsletter.php"><div class="bouton">
                 <span class=bouton>S’ABONNER À LA NEWSLETTER</span>
                 <img class=bouton-image src="src/svg/fleche-bouton.svg">
             </div></a>

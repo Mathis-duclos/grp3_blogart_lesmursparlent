@@ -12,18 +12,25 @@ sql_connect();
 }*/
 
 $numArt = 1 ;
-$urlImg = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt")[0];
+$urlImg = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt")[0]['urlPhotArt'];
 $libTitrArt = sql_select('ARTICLE', 'libTitrArt', "numArt = $numArt")[0]['libTitrArt'];
 $libChapoArt = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt")[0]['libChapoArt'];
 
 $numArt2 = 2 ;
-$urlImg2 = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt2")[0];
+$urlImg2 = sql_select('ARTICLE', 'urlPhotArt', "numArt = $numArt2")[0]['urlPhotArt'];
 $libTitrArt2 = sql_select('ARTICLE', 'libTitrArt', "numArt = $numArt2")[0]['libTitrArt'];
 $libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['libChapoArt'];
 ?>
 
 
 <main>
+    <div id="cb-cookie-banner" class="alert alert-dark text-center mb-0" role="alert">
+        <span>This website uses cookies to ensure you get the best experience on our website.</span>
+        <a href="https://www.cookiesandyou.com/" target="blank">Learn more</a>
+        <button type="button" class="btn btn-primary btn-sm ms-3" onclick="window.cb_hideCookieBanner()">
+            I Got It
+        </button>
+    </div>
     <section class="top-content">
         <img src="src/images/top-content-image3.png">
     </section>
@@ -35,6 +42,9 @@ $libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['li
             <h2>A LA UNE</h2>
             <img src="src/svg/fleche-titre.svg">
         </div>
+        <div class="sous-titre">
+            <p>Découvrez les derniers récits marquants de la Seconde Guerre mondiale à Bordeaux. Résistance, bunkers cachés et histoires oubliées vous plongent au cœur de cette époque bouleversante. À lire sans attendre !</p>
+        </div>
         <div class="a-la-une-content">
             <div class="a-la-une-cards">
                 <div class="a-la-une-card">
@@ -44,7 +54,7 @@ $libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['li
                         <p><?php echo $libChapoArt; ?></p><br>
                     </div>
                     <a href="/views/frontend/articles/article1.php"><div class="bouton">
-                        <span class=bouton>Voir l'article</span>
+                        <span>Voir l'article</span>
                         <img class=bouton-image src="src/svg/fleche-bouton.svg">
                     </div></a>
                 </div>
@@ -55,7 +65,7 @@ $libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['li
                         <p><?php echo $libChapoArt2; ?></p><br>
                     </div>
                     <a href="/views/frontend/articles/article2.php"><div class="bouton">
-                        <span class=bouton>Voir l'article</span>
+                        <span>Voir l'article</span>
                         <img class=bouton-image src="src/svg/fleche-bouton.svg">
                     </div></a>
                 </div>
@@ -74,7 +84,7 @@ $libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['li
             <div class="newsletter-texte">
                 <p>Recevez des récits inédits sur la Seconde Guerre mondiale à Bordeaux : témoignages, faits marquants et analyses. <br>Ne laissez pas l’Histoire s’effacer, abonnez-vous !</p>
             </div>
-            <a href="#"><div class="bouton">
+            <a href="/newsletter.php"><div class="bouton">
                 <span class=bouton>S’ABONNER À LA NEWSLETTER</span>
                 <img class=bouton-image src="src/svg/fleche-bouton.svg">
             </div></a>

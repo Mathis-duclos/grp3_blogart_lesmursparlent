@@ -1,17 +1,30 @@
+@font-face {
+    font-family: 'Inter';
+    src: url(../../src/font/Inter_24pt-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Lemon Milk';
+    font-style: normal;
+    font-weight: 400;
+    src: url(src/font/LEMONMILK-Regular.otf);
+}
+
 h1 {
     font-family: 'Lemon Milk';
 }
 
-h2 {
+body h2 {
     font-family: 'Lemon Milk';
-    font-size: 14px;
+    font-size: 24px;
 }
 
 p {
     font-family: 'Inter';
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
 }
+
 
 body {
     scroll-behavior: smooth;
@@ -46,7 +59,7 @@ input {
 }
 
 .logo {
-    width: 5vw;
+    width: 20px;
     height: auto;
 }
 
@@ -107,6 +120,24 @@ input {
     padding: 5px 10px;
 }
 
+.bouton {
+    display: inline-flex;
+    flex-direction: row;
+    max-width: fit-content;
+    font-family: 'Lemon Milk';
+    align-items: center;
+    color: white;
+    background-color: #711711;
+    border-radius: 10px;
+    padding: 10px 15px;
+    gap: 0.5vw;
+}
+
+.bouton-image {
+    max-width: 15px;
+    height: auto;
+}
+
 .bouton:hover .bouton-image {
     transform: translate(3px, -3px);}
 
@@ -114,8 +145,8 @@ input {
     transition: 0.3s ease;
 }
 
-.bouton:hover .bouton {
-    padding: 0.5vw 18px 0.5vw 15px;
+.bouton:hover {
+    padding: 10px 18px 10px 15px;
 }
 
 .bouton {

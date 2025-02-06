@@ -9,7 +9,7 @@ include '../../../header.php';
             <img class=bouton-image src="/src/svg/fleche-titre.svg">
         </div>
         <div class="col-md-12">
-            <form action="<?php echo ROOT_URL . '/api/security/login.php' ?>" method="post" onsubmit="return checkForm()">
+            <form action="<?php echo ROOT_URL . '/api/security/login.php' ?>" method="post" onsubmit="return checkForm()" class="form-login">
                 <div class="form-group">
                     <label for="pseudoMemb">Pseudo</label>
                     <input type="text" class="form-control" id="pseudoMemb" name="pseudoMemb" maxlength="100" placeholder="" required>
