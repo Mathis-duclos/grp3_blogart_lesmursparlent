@@ -39,24 +39,24 @@ $plCl2 = $Art2['libConclArt'];
                 <!-- Post header-->
                 <header class="mb-4">
                     <!-- Post title-->
-                    <h1 class="fw-bolder mb-1"><?php echo $libTitrArt1 ?></h1>
+                    <h1 class="fw-bolder mb-1"><?php echo $libTitrArt2 ?></h1>
                     <!-- Post meta content-->
-                    <div class="text-muted fst-italic mb-2"><?php echo $dtCreaArt1 ?></div>
+                    <div class="text-muted fst-italic mb-2"><?php echo $dtCreaArt2 ?></div>
                     <!-- Post categories-->
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Visite</a>
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Lieux</a>
                 </header>
                 <!-- Preview image figure-->
-                <figure class="mb-4"><img class="img-fluid rounded article-image" src="/src/uploads/<?php echo $urlImg1; ?>" alt="photo de Pierre Auzereau" /></figure>
+                <figure class="mb-4"><img class="img-fluid rounded article-image" src="/src/uploads/<?php echo $urlImg2; ?>" alt="photo de Pierre Auzereau" /></figure>
                 <!-- Post content-->
                 <section class="mb-5">
-                    <p class="fs-5 mb-4"><?php echo $libChapoArt1 ?></p>
-                    <p class="fs-5 mb-4"><?php echo $libAccrochArt1 ?></p>
-                    <p class="fs-5 mb-4"><?php echo $parag1Art1 ?></p>
-                    <h2 class="fw-bolder mb-4 mt-5"><?php echo $libSsTitr1Art1 ?></h2>
-                    <p class="fs-5 mb-4"><?php echo $parag2Art1 ?></p>
-                    <h2 class="fw-bolder mb-4 mt-5"><?php echo $libSsTitr2Art1 ?></h2>
-                    <p class="fs-5 mb-4"><?php echo $parag3Art1 ?></p>
+                    <p class="fs-5 mb-4"><?php echo $libChapoArt2 ?></p>
+                    <p class="fs-5 mb-4"><?php echo $libAccrochArt2 ?></p>
+                    <p class="fs-5 mb-4"><?php echo $parag1Art2 ?></p>
+                    <h2 class="fw-bolder mb-4 mt-5"><?php echo $libSsTitr1Art2 ?></h2>
+                    <p class="fs-5 mb-4"><?php echo $parag2Art2 ?></p>
+                    <h2 class="fw-bolder mb-4 mt-5"><?php echo $libSsTitr2Art2 ?></h2>
+                    <p class="fs-5 mb-4"><?php echo $parag3Art2 ?></p>
                 </section>
             </article>
             <!-- Comments section-->
@@ -114,7 +114,6 @@ $plCl2 = $Art2['libConclArt'];
             <div class="card mb-4">
                 <div class="card-body"><?php echo $libTitrArt1 ?></div>
                 <img class="img-fluid rounded article-image" src="/src/uploads/<?php echo $urlImg1; ?>">
-                <div class="card-body"><?php echo $libChapoArt1 ?></div>
                 <a href="/views/frontend/articles/article1.php"> <div class="card-body">Voir l'article</div></a>
             </div>
         </div>

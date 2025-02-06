@@ -61,6 +61,10 @@ require_once 'config.php';
                     } ?>
                 </div>
             </div>
+            <div class="header-middle">
+              <h1>BORDEAUX</h1>
+              <h1>EN RESISTANCE</h1>
+            </div>
             <div class="header-right">
                 <div class="search-container">
                     <div class="collapse" id="searchCollapse">

@@ -99,11 +99,11 @@ $libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['li
             <img src="src/svg/fleche-titre.svg">
         </div>
         <div class="contact-content">
-            <form>
+            <form id="emailForm">
                 <div class="form-top">
                     <div class="mb-3">
-                        <label for="Jean Moulin" class="form-label">Votre nom et prénom :</label>
-                        <input placeholder="ex: Jean Moulin" type="name" class="custom-form" id="exampleInputName1" aria-describedby="nameHelp">
+                        <label for="exampleInputName1" class="form-label">Votre nom et prénom :</label>
+                        <input placeholder="ex: Jean Moulin" type="text" class="custom-form" id="exampleInputName1" aria-describedby="nameHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Votre adresse e-mail :</label>
@@ -112,14 +112,36 @@ $libChapoArt2 = sql_select('ARTICLE', 'libChapoArt', "numArt = $numArt2")[0]['li
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputMessage1" class="form-label">Votre message :</label>
-                    <textarea id="story" name="story" rows="8" cols="33" class="custom-form-message"></textarea>
+                    <textarea id="exampleInputMessage1" name="message" rows="8" cols="33" class="custom-form-message"></textarea>
                 </div>
-                <a href="#"><div class="bouton">
-                    <span class=bouton>ENVOYER</span>
-                    <img class=bouton-image src="src/svg/fleche-bouton.svg">
-                </div></a>                
+                
+                <a id="mailtoLink">
+                    <div class="bouton" onclick="sendMail()">
+                        <span class="bouton">ENVOYER</span>
+                        <img class="bouton-image" src="src/svg/fleche-bouton.svg">
+                    </div>
+                </a>
             </form>
         </div>
     </section>
     <?php require_once 'footer.php'; ?>
 </main>
+<script>
+    function sendMail() {
+        // Récupération des valeurs du formulaire
+        let name = document.getElementById("exampleInputName1").value;
+        let email = document.getElementById("exampleInputEmail1").value;
+        let message = document.getElementById("exampleInputMessage1").value;
+
+        // Encodage pour éviter les problèmes d'espaces ou de caractères spéciaux
+        name = encodeURIComponent(name);
+        email = encodeURIComponent(email);
+        message = encodeURIComponent(message);
+
+        // Création de l'URL mailto avec les données saisies
+        let mailtoLink = `mailto:destinataire@example.com?subject=Message%20de%20${name}&body=Nom%20:%20${name}%0AEmail%20:%20${email}%0A%0AMessage%20:%0A${message}`;
+
+        // Attribution du lien au bouton
+        document.getElementById("mailtoLink").setAttribute("href", mailtoLink);
+    }
+</script>

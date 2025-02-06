@@ -10,8 +10,9 @@
     src: url(src/font/LEMONMILK-Regular.otf);
 }
 
-h1 {
+header h1 {
     font-family: 'Lemon Milk';
+    font-size: 24px;
 }
 
 body h2 {
@@ -59,7 +60,7 @@ input {
 }
 
 .logo {
-    width: 20px;
+    width: 4vw;
     height: auto;
 }
 
@@ -106,10 +107,24 @@ input {
     flex-direction: row;
 }
 
+.header-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .search-container {
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
+}
+
+#searchCollapse {
+    position: absolute;
+    right: 5.5vw;
+    padding: 5px;
+    width: 200px; /* Taille fixe pour éviter les décalages */
 }
 
 .custom-form-search {

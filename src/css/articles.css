@@ -57,3 +57,22 @@
 .articles .titre {
     margin-top: 20px;
 }
+
+.side-widget .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa; /* Fond gris clair */
+    border: 2px solid #000000; /* Bordure légère */
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card a {
+    color: #711711;
+}
+
+.side-widget img {
+    border-radius: 50px;
+    width: 25vw;
+}
