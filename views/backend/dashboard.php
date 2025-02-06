@@ -70,7 +70,7 @@ include '../../header.php';
                         <tr>
                             <td>Commentaires</td>
                             <td>
-                                <a href="/views/backend/comments/list.php" class="btn btn-primary disabled">List</a>
+                                <a href="/views/backend/comments/list.php" class="btn btn-primary ">List</a>
                                 <a href="/views/backend/comments/create.php" class="btn btn-success disabled">Create</a>
                                 <a href="/views/backend/comments/edit.php" class="btn btn-warning disabled">Edit</a>
                                 <a href="/views/backend/comments/delete.php" class="btn btn-danger disabled">Delete</a>
