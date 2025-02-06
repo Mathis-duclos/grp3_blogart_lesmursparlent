@@ -18,7 +18,7 @@ $membres = sql_select("MEMBRE", "*");
                         <th>Nom</th>
                         <th>Pseudo</th>
                         <th>Email</th>
-                          <th>Accord</th>
+                        <th>Accord</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
