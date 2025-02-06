@@ -113,9 +113,22 @@ $plCl = sql_select('ARTICLE', 'libConclArt', "numArt = $numArt")[0]['libConclArt
                         </div>
                         <select id="selected-keywords" name="selectedKeywords[]" class="form-control" multiple size="8" style="width: 45%;">
                             <!-- Les mots clés sélectionnés iront ici -->
+                            <?php
+                            $query = "MOTCLE AS MC JOIN  MOTCLEARTICLE AS MCA ON MC.numMotCle = MCA.numMotCle JOIN ARTICLE AS AR ON MCA.numArt = AR.numArt" ;
+                            $selected_keywords = sql_select($query , "libMotCle", "MCA.numArt = $numArt");
+                            // SELECT libMotCle
+                            // FROM MOTCLE  
+                            // INNER JOIN MOTCLEARTICLE ON MOTCLE.numMotCle = MOTCLEARTICLE.numMotCle 
+                            // INNER JOIN ARTICLE ON MOTCLEARTICLE.numArt = ARTICLE.numArt
+                            // WHERE  WHERE MOTCLEARTICLE.numArt = 44
+                            foreach ($selected_keywords as $keyword) {
+                                echo '<option value="' . $keyword['numMotCle'] . '">' . $keyword['libMotCle'] . '</option>';
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>
+
                 <button type="submit" class="btn btn-success">Confirmer</button>
             </form>
         </div>

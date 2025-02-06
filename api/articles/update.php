@@ -28,3 +28,18 @@ if (isset($_FILES['urlPhotArt'])) {
 sql_update('article', "dtMajArt='$dtMajArt',libTitrArt = '$libTitrArt', libChapoArt = '$libChapoArt', libAccrochArt = '$libAccrochArt', parag1Art = '$parag1Art', libSsTitr1Art = '$libSsTitr1Art', parag2Art = '$parag2Art', libSsTitr2Art = '$libSsTitr2Art', parag3Art = '$parag3Art', libConclArt = '$libConclArt', urlPhotArt = '$nomImage', numThem = '$numThem'", "numArt = $numArt");
 
 header('Location: ../../views/backend/articles/list.php');
+
+
+$selectedKeywords = $_POST['selectedKeywords'];
+
+// Supprimer les anciens mcl 
+sql_delete('MMOTCLEARTICLE', "numArt = $numArt");
+
+// Ajouter les nouv mtcl 
+foreach ($selectedKeywords as $keywordId) {
+    sql_insert('MMOTCLEARTICLE', [
+        'numArt' => $numArt,
+        'numMotCle' => $keywordId,
+    ]);
+}
+?>
