@@ -1,7 +1,6 @@
 <?php
 include '../../../header.php';
 
-echo("Form signup");
 ?> 
 <div class="container">
     <div class="row">
@@ -53,7 +52,7 @@ echo("Form signup");
                 </div>
                 <br>
                 <div class="form-group">
-                    <label>Accord</label>
+                    <label>Acceptez vous la conservation de vos données</label>
                     <div class="form-check">
                         <input type="radio" id="accord1" name="accordMemb" value="1" class="form-check-input" required>
                         <label class="form-check-label" for="accord1">Oui</label>

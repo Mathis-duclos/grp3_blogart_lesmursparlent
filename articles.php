@@ -45,3 +45,31 @@ $articles = sql_select("ARTICLE", "*", null, null, "numArt DESC");
         </div>
     </section>
 </main>
+
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Sélectionne tous les liens vers les articles
+        const articleLinks = document.querySelectorAll(".a-la-une-card a");
+
+        // Vérifie si l'utilisateur est connecté
+        let isLoggedIn = <?php echo isset($_SESSION['pseudoMemb']) ? 'true' : 'false'; ?>;
+
+        // Ajoute un écouteur d'événement sur chaque lien d'article
+        articleLinks.forEach(link => {
+            link.addEventListener("click", function (event) {
+                if (!isLoggedIn) {
+                    // Empêche la redirection normale
+                    event.preventDefault();
+
+                    // Affiche une pop-up d'alerte
+                    alert("Vous devez être connecté pour lire cet article.");
+
+                    // Redirection vers la page de connexion après fermeture de la pop-up
+                    window.location.href = "/views/backend/security/login.php";
+                }
+            });
+        });
+    });
+</script>

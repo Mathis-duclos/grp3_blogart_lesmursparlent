@@ -168,3 +168,41 @@ $article = sql_select("ARTICLE", "*", null, null, "numArt DESC", "2");
         document.getElementById("mailtoLink").setAttribute("href", mailtoLink);
     }
 </script>
+
+<script>
+    // Vérifie si l'URL contient "errorpseudo=1"
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("errorpseudo") && urlParams.get("errorpseudo") == "1") {
+        // Affiche une alerte
+        alert("Le pseudonyme choisi est déjà utilisé. Veuillez en choisir un autre.");
+        
+        // Redirection vers la page d'inscription après fermeture de l'alerte
+        window.location.href = "/views/backend/security/signup.php";
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Sélectionne tous les liens vers les articles
+        const articleLinks = document.querySelectorAll(".a-la-une-card a");
+
+        // Vérifie si l'utilisateur est connecté
+        let isLoggedIn = <?php echo isset($_SESSION['pseudoMemb']) ? 'true' : 'false'; ?>;
+
+        // Ajoute un écouteur d'événement sur chaque lien d'article
+        articleLinks.forEach(link => {
+            link.addEventListener("click", function (event) {
+                if (!isLoggedIn) {
+                    // Empêche la redirection normale
+                    event.preventDefault();
+
+                    // Affiche une pop-up d'alerte
+                    alert("Vous devez être connecté pour lire cet article.");
+
+                    // Redirection vers la page de connexion après fermeture de la pop-up
+                    window.location.href = "/views/backend/security/login.php";
+                }
+            });
+        });
+    });
+</script>
