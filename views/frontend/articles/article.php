@@ -23,8 +23,9 @@ $plCl1 = $art['libConclArt'];
 $latestComments = sql_select(
     "COMMENT JOIN MEMBRE ON COMMENT.numMemb = MEMBRE.numMemb",
     "MEMBRE.pseudoMemb, COMMENT.libCom",
-    "COMMENT.numArt = (SELECT MAX($numArt) FROM ARTICLE)"
+    "COMMENT.numArt = $numArt AND COMMENT.attModOK = 1"
 );
+
 
 
 // Récupérer les mots-clés associés à l'article
@@ -34,6 +35,31 @@ $motsCles = sql_select(
     "MOTCLE.libMotCle",
     "MOTCLEARTICLE.numArt = $numArt"
 );
+
+
+// Récupérer le nombre total de likes pour cet article
+$totalLikes = sql_select(
+    "LIKEART",
+    "COUNT(*) AS totalLikes",
+    "numArt = $numArt"
+)[0]['totalLikes'];
+
+// Récupérer le numMemb à partir du pseudoMemb de la session
+$pseudoMemb = $_SESSION['pseudoMemb'];
+
+$user = sql_select(
+    "MEMBRE",
+    "numMemb",
+    "pseudoMemb = '$pseudoMemb'"
+);
+
+if (empty($user)) {
+    die("Utilisateur non trouvé !");
+}
+
+$numMemb = $user[0]['numMemb'];
+
+
 
 
 
@@ -60,6 +86,11 @@ $motsCles = sql_select(
                     <?= htmlspecialchars($motCle['libMotCle']) ?>
                     </a>
                     <?php endforeach; ?>
+
+                    <!-- Likes -->
+                    <div class="text-muted fst-italic mt-2">
+                        👍 Likes : <?php echo $totalLikes; ?>
+                    </div>
                 </header>
                 <!-- Preview image figure-->
                 <figure class="mb-4"><img class="img-fluid rounded article-image" src="/src/uploads/<?php echo $urlImg1; ?>" alt="photo de Pierre Auzereau" /></figure>
@@ -95,6 +126,47 @@ $motsCles = sql_select(
             
                     </div>
                 </div>
+
+                <?php
+// Vérifiez si l'utilisateur a déjà liké cet article
+$userLiked = false;
+
+$result = sql_select(
+    "LIKEART",
+    "COUNT(*) AS alreadyLiked",
+    "numMemb = $numMemb AND numArt = $numArt AND likeA = 1"
+);
+
+if ($result && $result[0]['alreadyLiked'] > 0) {
+    $userLiked = true;
+}
+
+// Ajout d'un like si l'utilisateur n'a pas encore liké
+// Traitement des likes
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['likeArticle'])) {
+    if (!$userLiked) {
+        sql_insert(
+            "LIKEART",
+            "numMemb, numArt, likeA",
+            "$numMemb, $numArt, 1"
+        );
+        // Met à jour la variable pour refléter le nouvel état
+        $userLiked = true;
+    }
+}
+?>
+
+<!-- Bouton Like/Commentaire -->
+
+<?php if (!$userLiked): ?>
+    <form method="POST" style="display: inline;">
+        <button type="submit" name="likeArticle" class="btn btn-primary">Like</button>
+    </form>
+<?php else: ?>
+    <p class="text-success mt-2">Vous avez aimé cet article.</p>
+<?php endif; ?>
+</form>
+
             </section>
         </div>
         <!-- Side widgets-->
