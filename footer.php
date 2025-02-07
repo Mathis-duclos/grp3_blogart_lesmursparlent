@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bordeaux en Résistance - Accueil</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/src/css/reset.css">
-    <link rel="stylesheet" href="/src/css/index-style.css">
-    <link rel="stylesheet" href="/src/css/font.css">
-    <link rel="stylesheet" href="/src/css/header.css">
-    <link rel="stylesheet" href="/src/css/register.css">
-    <link rel="stylesheet" href="/src/css/login.css">
-    <link rel="stylesheet" href="/src/css/articles.css">
-    <link rel="stylesheet" href="./src/cookie-banner.css">
-    <link rel="icon" type="image/png" href="/src/svg/favicon.svg">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bordeaux en Résistance - Accueil</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/src/css/reset.css">
+        <link rel="stylesheet" href="/src/css/index-style.css">
+        <link rel="stylesheet" href="/src/css/font.css">
+        <link rel="stylesheet" href="/src/css/header.css">
+        <link rel="stylesheet" href="/src/css/register.css">
+        <link rel="stylesheet" href="/src/css/login.css">
+        <link rel="stylesheet" href="/src/css/articles.css">
+        <link rel="stylesheet" href="./src/cookie-banner.css">
+        <link rel="icon" type="image/png" href="/src/svg/favicon.svg">
 </head>
 <body>
         <footer style="background-color: #f8f9fa; padding: 20px 0; text-align: center;">
