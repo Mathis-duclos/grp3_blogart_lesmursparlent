@@ -9,7 +9,8 @@ include '../../../header.php';
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Connexion</h1>
+        <h1 style="font-size: 2.5rem;">Connexion</h1>
+        <br>
         </div>
         <div class="col-md-12">
             <form action="<?php echo ROOT_URL . '/api/security/login.php' ?>" method="post" onsubmit="return checkForm()">

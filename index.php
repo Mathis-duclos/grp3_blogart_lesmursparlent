@@ -2,14 +2,20 @@
 require_once 'header.php';
 sql_connect();
 
-/*if ( isset($_GET["errorpseudo"]) && $_GET["errorpseudo"] == 1) {
-    echo "Pseudo déjà utilisé : veuillez recommencer";
-}*/
+
 
 /*if ( isset($_GET["login"]) && $_GET["login"] == 1) {
     echo "Vous êtes connectés inchalla ";
     echo $_SESSION['pseudoMemb'];
 }*/
+
+/*if ( isset($_GET["errorpseudo"]) && $_GET["errorpseudo"] == 1) {
+    echo '<div style="background-color: red; color: white; padding: 10px; border-radius: 5px; text-align: center; width: fit-content; margin: 10px auto; font-weight: bold;">
+        Pseudo déjà utilisé : veuillez recommencer
+        </div>';
+
+}/*
+
 
 
 
@@ -207,3 +213,6 @@ $article = sql_select("ARTICLE", "*", null, null, "numArt DESC", "2");
         });
     });
 </script>
+
+
+

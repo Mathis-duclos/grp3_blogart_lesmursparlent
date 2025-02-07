@@ -37,7 +37,7 @@ if ($passGood == true && $pseudoGood == true) {
     
 
 } else {
-    echo "ce n'est pas bon";
+    header(header: 'Location: ../../../index.php?login=error');
 }
 
 
