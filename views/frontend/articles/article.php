@@ -163,9 +163,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="mt-3">
     <form method="POST" style="display: inline;">
         <?php if (!$userLiked): ?>
-            <button type="submit" name="likeArticle" class="btn btn-outline-primary">👍 J'aime</button>
+            <button type="submit" name="likeArticle" class="bouton" style="color: white;">👍 J'aime</button>
         <?php else: ?>
-            <button type="submit" name="unlikeArticle" class="btn btn-danger">❌ Je n'aime plus</button>
+            <button type="submit" name="unlikeArticle" class="bouton" style="color: white;">❌ Je n'aime plus</button>
         <?php endif; ?>
     </form>
 </div>
