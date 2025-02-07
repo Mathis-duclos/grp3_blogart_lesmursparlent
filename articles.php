@@ -2,74 +2,104 @@
 require_once 'header.php';
 sql_connect();
 
-$articles = sql_select("ARTICLE", "*", null, null, "numArt DESC");
+$motsCles = sql_select("MOTCLE", "DISTINCT libMotCle, numMotCle", null, null, "libMotCle ASC");
+
+
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+$searchMotCle = isset($_GET['searchMotCle']) ? (int) $_GET['searchMotCle'] : null;
+
+if ($searchMotCle) {
+    $articles = sql_select(
+        "ARTICLE 
+        INNER JOIN MOTCLEARTICLE ON ARTICLE.numArt = MOTCLEARTICLE.numArt",
+        "ARTICLE.*",
+        "MOTCLEARTICLE.numMotCle = $searchMotCle",
+        null,
+        "ARTICLE.numArt DESC"
+    );
+} else {
+    $articles = sql_select("ARTICLE", "*", null, null, "numArt DESC");
+}
+
 ?>
 
 <main>
-    <div id="cb-cookie-banner" class="alert alert-dark text-center mb-0" role="alert">
-        <span>This website uses cookies to ensure you get the best experience on our website.</span>
-        <a href="https://www.cookiesandyou.com/" target="_blank">Learn more</a>
-        <button type="button" class="btn btn-primary btn-sm ms-3" onclick="window.cb_hideCookieBanner()">
-            I Got It
-        </button>
-    </div>
+
+
     <section class="a-la-une">
-        <br>
         <div class="titre">
             <h2>LA LISTE DES ARTICLES</h2>
             <img src="src/svg/fleche-titre.svg">
+            <br>
         </div>
-        <div class="sous-titre">
-            <p>Découvrez les derniers récits marquants de la Seconde Guerre mondiale à Bordeaux. Résistance, bunkers cachés et histoires oubliées vous plongent au cœur de cette époque bouleversante. À lire sans attendre !</p>
-        </div>
+
+        <section class="search-bar d-flex justify-content-center my-4">
+    <form method="GET" action="articles.php" class="d-flex align-items-center gap-2">
+        <label for="searchMotCle" class="me-2 fw-bold">Rechercher :</label>
+        <select name="searchMotCle" id="searchMotCle" class="form-select w-auto">
+            <option value="">-- Sélectionner un mot-clé --</option>
+            <?php foreach ($motsCles as $mot) : ?>
+                <option value="<?php echo $mot['numMotCle']; ?>" 
+                    <?php echo (isset($_GET['searchMotCle']) && $_GET['searchMotCle'] == $mot['numMotCle']) ? 'selected' : ''; ?>>
+                    <?php echo htmlspecialchars($mot['libMotCle']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <button type="submit" class="btn btn-primary">Rechercher</button>
+    </form>
+</section>
+
+
+        
+
         <div class="a-la-une-content">
             <div class="a-la-une-cards">
-                <?php foreach ($articles as $article) : ?>
-                    <div class="a-la-une-card">
-                        <a href="/views/frontend/articles/article.php?numArt=<?php echo $article['numArt']; ?>"> 
-                            <img class="card-image" src="/src/uploads/<?php echo htmlspecialchars($article['urlPhotArt']); ?>">
-                        </a>
-                        <div class="card-texte">
-                            <p class="bold"><?php echo htmlspecialchars($article['libTitrArt']); ?></p><br>
-                            <p><?php echo htmlspecialchars($article['libChapoArt']); ?></p><br>
-                        </div>
-                        <a href="/views/frontend/articles/article.php?numArt=<?php echo $article['numArt']; ?>">
-                            <div class="bouton">
-                                <span>Voir l'article</span>
-                                <img class="bouton-image" src="src/svg/fleche-bouton.svg">
+                <?php if (!empty($articles)) : ?>
+                    <?php foreach ($articles as $article) : ?>
+                        <div class="a-la-une-card">
+                            <a href="/views/frontend/articles/article.php?numArt=<?php echo $article['numArt']; ?>"> 
+                                <img class="card-image" src="/src/uploads/<?php echo htmlspecialchars($article['urlPhotArt']); ?>">
+                            </a>
+
+                            <!-- Affichage des mots-clés -->
+                            <div class="mots-cles">
+                                <?php 
+                                $numArt = (int) $article['numArt'];
+                                $motsCles = sql_select(
+                                    "MOTCLE 
+                                    JOIN MOTCLEARTICLE ON MOTCLE.numMotCle = MOTCLEARTICLE.numMotCle",
+                                    "MOTCLE.libMotCle",
+                                    "MOTCLEARTICLE.numArt = $numArt"
+                                );
+
+                                if (!empty($motsCles)) {
+                                    foreach ($motsCles as $motCle) {
+                                        echo '<span class="badge bg-secondary">' . htmlspecialchars($motCle['libMotCle']) . '</span> ';
+                                    }
+                                } else {
+                                    echo '<span class="badge bg-light text-dark">Aucun mot-clé</span>';
+                                }
+                                ?>
                             </div>
-                        </a>
-                    </div>
-                <?php endforeach; ?>
+
+                            <div class="card-texte">
+                                <p class="bold"><?php echo htmlspecialchars($article['libTitrArt']); ?></p><br>
+                                <p><?php echo htmlspecialchars($article['libChapoArt']); ?></p><br>
+                            </div>
+
+                            <a href="/views/frontend/articles/article.php?numArt=<?php echo $article['numArt']; ?>">
+                                <div class="bouton">
+                                    <span>Voir l'article</span>
+                                    <img class="bouton-image" src="src/svg/fleche-bouton.svg">
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>Aucun article trouvé pour "<?php echo htmlspecialchars($search); ?>"</p>
+                <?php endif; ?>
             </div>
         </div>
     </section>
 </main>
-
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Sélectionne tous les liens vers les articles
-        const articleLinks = document.querySelectorAll(".a-la-une-card a");
-
-        // Vérifie si l'utilisateur est connecté
-        let isLoggedIn = <?php echo isset($_SESSION['pseudoMemb']) ? 'true' : 'false'; ?>;
-
-        // Ajoute un écouteur d'événement sur chaque lien d'article
-        articleLinks.forEach(link => {
-            link.addEventListener("click", function (event) {
-                if (!isLoggedIn) {
-                    // Empêche la redirection normale
-                    event.preventDefault();
-
-                    // Affiche une pop-up d'alerte
-                    alert("Vous devez être connecté pour lire cet article.");
-
-                    // Redirection vers la page de connexion après fermeture de la pop-up
-                    window.location.href = "/views/backend/security/login.php";
-                }
-            });
-        });
-    });
-</script>
