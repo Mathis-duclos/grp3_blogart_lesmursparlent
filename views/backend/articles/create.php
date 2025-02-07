@@ -23,7 +23,7 @@ include '../../../header.php';
                 </div>
                 <div class="form-group">
                     <label for="chapeau">Chapô</label>
-                    <textarea class="form-control" id="libChapoArt" name="libChapoArt" maxlength="500" placeholder="500 caracteres max" required></textarea>
+                    <textarea class="form-control" id="libChapoArt" name="libChapoArt" maxlength="500" placeholder="500 caracteres max" rows="10" cols="10" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="libAccrochArt">Accroche paragraphe 1</label>
@@ -31,7 +31,7 @@ include '../../../header.php';
                 </div>
                 <div class="form-group">
                     <label for="parag1Art">Paragraphe 1</label>
-                    <textarea class="form-control" id="parag1Art" name="parag1Art" maxlength="1200" placeholder="1200 caracteres max" required></textarea>
+                    <textarea class="form-control" id="parag1Art" name="parag1Art" maxlength="1200" placeholder="1200 caracteres max" rows="10" cols="10" required></textarea>
                 </div>
                 <div class="form-group">
                 <div class="form-group">
@@ -48,11 +48,11 @@ include '../../../header.php';
                 </div>
                 <div class="form-group">
                     <label for="parag3Art">Paragraphe 3</label>
-                    <textarea class="form-control" id="parag3Art" name="parag3Art" maxlength="1200" placeholder="1200 caracteres max" required></textarea>
+                    <textarea class="form-control" id="parag3Art" name="parag3Art" maxlength="1200" placeholder="1200 caracteres max" rows="10" cols="10" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="libConclArt">Conclusion</label>
-                    <textarea class="form-control" id="libConclArt" name="libConclArt" maxlength="800" placeholder="800 caracteres max" required></textarea>
+                    <textarea class="form-control" id="libConclArt" name="libConclArt" maxlength="800" placeholder="800 caracteres max" rows="10" cols="10" required></textarea>
                 </div>
                 <div class="form-group">
                     <!-- liste déroulante pour sélectionner la thématique -->
