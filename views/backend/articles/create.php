@@ -68,7 +68,7 @@ include '../../../header.php';
                 <!-- Upload de l'image -->
                 <div class="form-group">
                     <label for="urlPhotArt">Image d’illustration</label>
-                    <input type="file" class="form-control-file" id="urlPhotArt" name="urlPhotArt" accept="image/*">
+                    <input type="file" class="form-control-file" id="urlPhotArt" name="urlPhotArt" accept="image/*" required>
                 </div>
                 <!-- Dual Listbox pour les mots clés -->
                 <div class="form-group">
