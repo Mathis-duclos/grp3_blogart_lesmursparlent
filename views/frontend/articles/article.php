@@ -1,34 +1,41 @@
 <?php
-
 require_once '../../../header.php';
 
-$numArt = $_GET['numArt'] ;
+// Vérification de l'entrée GET
+if (!isset($_GET['numArt']) || empty($_GET['numArt'])) {
+    die("Article non spécifié.");
+}
 
-$art = sql_select('ARTICLE', '*', "numArt = $numArt")[0];
+$numArt = intval($_GET['numArt']); // Sécurisation : conversion en entier
 
+// Récupération de l'article
+$art = sql_select('ARTICLE', '*', "numArt = $numArt");
+if (empty($art)) {
+    die("Article introuvable.");
+}
+$art = $art[0];
+
+// Extraction des données de l'article
 $urlImg1 = $art['urlPhotArt'];
-$libTitrart = $art['libTitrArt'];
-$libChapoart = $art['libChapoArt'];
+$libTitrart = htmlspecialchars($art['libTitrArt'], ENT_QUOTES, 'UTF-8');
+$libChapoart = htmlspecialchars($art['libChapoArt'], ENT_QUOTES, 'UTF-8');
 $dtCreaart = $art['dtCreaArt'];
-$libAccrochart = $art['libAccrochArt'];
-$parag1art = $art['parag1Art'];
-$libSsTitr1art = $art['libSsTitr1Art'];
-$parag2art = $art['parag2Art'];
-$libSsTitr2art = $art['libSsTitr2Art'];
-$parag3art = $art['parag3Art'];
-$plCl1 = $art['libConclArt'];
+$libAccrochart = htmlspecialchars($art['libAccrochArt'], ENT_QUOTES, 'UTF-8');
+$parag1art = htmlspecialchars($art['parag1Art'], ENT_QUOTES, 'UTF-8');
+$libSsTitr1art = htmlspecialchars($art['libSsTitr1Art'], ENT_QUOTES, 'UTF-8');
+$parag2art = htmlspecialchars($art['parag2Art'], ENT_QUOTES, 'UTF-8');
+$libSsTitr2art = htmlspecialchars($art['libSsTitr2Art'], ENT_QUOTES, 'UTF-8');
+$parag3art = htmlspecialchars($art['parag3Art'], ENT_QUOTES, 'UTF-8');
+$plCl1 = htmlspecialchars($art['libConclArt'], ENT_QUOTES, 'UTF-8');
 
-//$latestComments = sql_select("COMMENT", "libCom", "numArt = (SELECT MAX(numArt) FROM ARTICLE)");
-
+// Récupération des commentaires validés pour cet article
 $latestComments = sql_select(
     "COMMENT JOIN MEMBRE ON COMMENT.numMemb = MEMBRE.numMemb",
     "MEMBRE.pseudoMemb, COMMENT.libCom",
     "COMMENT.numArt = $numArt AND COMMENT.attModOK = 1"
 );
 
-
-
-// Récupérer les mots-clés associés à l'article
+// Récupération des mots-clés associés
 $motsCles = sql_select(
     "MOTCLE 
     JOIN MOTCLEARTICLE ON MOTCLE.numMotCle = MOTCLEARTICLE.numMotCle",
@@ -36,17 +43,20 @@ $motsCles = sql_select(
     "MOTCLEARTICLE.numArt = $numArt"
 );
 
-
-// Récupérer le nombre total de likes pour cet article
+// Récupération du nombre total de likes
 $totalLikes = sql_select(
     "LIKEART",
     "COUNT(*) AS totalLikes",
     "numArt = $numArt"
 )[0]['totalLikes'];
 
-// Récupérer le numMemb à partir du pseudoMemb de la session
-$pseudoMemb = $_SESSION['pseudoMemb'];
+// Récupération de l'utilisateur connecté
+if (!isset($_SESSION['pseudoMemb']) || empty($_SESSION['pseudoMemb'])) {
+    die("Utilisateur non connecté.");
+}
+$pseudoMemb = htmlspecialchars($_SESSION['pseudoMemb'], ENT_QUOTES, 'UTF-8');
 
+// Récupération du numéro de membre
 $user = sql_select(
     "MEMBRE",
     "numMemb",
@@ -59,140 +69,89 @@ if (empty($user)) {
 
 $numMemb = $user[0]['numMemb'];
 
-
-
-
-
-
-
-
-?>
-
-<!-- Page content-->
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-8">
-            <!-- Post content-->
-            <article>
-                <!-- Post header-->
-                <header class="mb-4">
-                    <!-- Post title-->
-                    <h1 class="fw-bolder mb-1"><?php echo $libTitrart ?></h1>
-                    <!-- Post meta content-->
-                    <div class="text-muted fst-italic mb-2"><?php echo $dtCreaart ?></div>
-                    <!-- Post categories-->
-                    <?php foreach ($motsCles as $motCle) : ?>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">
-                    <?= htmlspecialchars($motCle['libMotCle']) ?>
-                    </a>
-                    <?php endforeach; ?>
-
-                    <!-- Likes -->
-                    <div class="text-muted fst-italic mt-2">
-                        👍 Likes : <?php echo $totalLikes; ?>
-                    </div>
-                </header>
-                <!-- Preview image figure-->
-                <figure class="mb-4"><img class="img-fluid rounded article-image" src="/src/uploads/<?php echo $urlImg1; ?>" alt="photo de Pierre Auzereau" /></figure>
-                <!-- Post content-->
-                <section class="mb-5">
-                    <p class="fs-5 mb-4"><?php echo $libChapoart ?></p>
-                    <p class="fs-5 mb-4"><?php echo $libAccrochart ?></p>
-                    <p class="fs-5 mb-4"><?php echo $parag1art ?></p>
-                    <h2 class="fw-bolder mb-4 mt-5"><?php echo $libSsTitr1art ?></h2>
-                    <p class="fs-5 mb-4"><?php echo $parag2art ?></p>
-                    <h2 class="fw-bolder mb-4 mt-5"><?php echo $libSsTitr2art ?></h2>
-                    <p class="fs-5 mb-4"><?php echo $parag3art ?></p>
-                </section>
-            </article>
-
-            
-            <!-- Comments section-->
-            <section class="mb-5">
-                <div class="card bg-light">
-                    <div class="card-body">
-
-                    <?php if (!empty($latestComments)) {
-    foreach ($latestComments as $comment) {
-        echo "<strong>" . $comment['pseudoMemb'] . " :</strong><br>";
-        echo $comment['libCom'] . "<br><br>";
-    } } else {
-    echo "Aucun commentaire trouvé pour l'article le plus récent.";
-    }
-
-            ?>
-
-                <a href="addcom.php?numArt=<?php echo $numArt; ?>" class="bouton" style="color: white;">Ajouter commentaire</a>
-            
-                    </div>
-                </div>
-
-                <?php
-// Vérifiez si l'utilisateur a déjà liké cet article
-$userLiked = false;
-
-$result = sql_select(
+// Vérification si l'utilisateur a déjà liké cet article
+$userLiked = sql_select(
     "LIKEART",
     "COUNT(*) AS alreadyLiked",
     "numMemb = $numMemb AND numArt = $numArt AND likeA = 1"
-);
+)[0]['alreadyLiked'] > 0;
 
-if ($result && $result[0]['alreadyLiked'] > 0) {
-    $userLiked = true;
-}
-
-// Traitement des likes et dislikes
+// Traitement des likes/dislikes
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['likeArticle']) && !$userLiked) {
-        // Ajouter un like
         sql_insert("LIKEART", "numMemb, numArt, likeA", "$numMemb, $numArt, 1");
         $userLiked = true;
-        $totalLikes++; // Incrémente le total des likes
-
+        $totalLikes++; // Mise à jour des likes
     } elseif (isset($_POST['unlikeArticle']) && $userLiked) {
-        // Supprimer le like
         sql_delete("LIKEART", "numMemb = $numMemb AND numArt = $numArt");
         $userLiked = false;
-        $totalLikes--; // Décrémente le total des likes
+        $totalLikes--; // Mise à jour des dislikes
     }
+    header("Location: " . $_SERVER['REQUEST_URI']);
+    exit;
 }
-
 ?>
 
-<!-- Bouton Like/Unlike -->
-<div class="mt-3">
-    <form method="POST" style="display: inline;">
-        <?php if (!$userLiked): ?>
-            <button type="submit" name="likeArticle" class="bouton" style="color: white;">👍 J'aime</button>
-        <?php else: ?>
-            <button type="submit" name="unlikeArticle" class="bouton" style="color: white;">❌ Je n'aime plus</button>
-        <?php endif; ?>
-    </form>
-</div>
+<!-- Page content -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content -->
+            <article>
+                <header class="mb-4">
+                    <h1 class="fw-bolder mb-1"><?= $libTitrart ?></h1>
+                    <div class="text-muted fst-italic mb-2"><?= $dtCreaart ?></div>
+                    <?php foreach ($motsCles as $motCle): ?>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">
+                            <?= htmlspecialchars($motCle['libMotCle']) ?>
+                        </a>
+                    <?php endforeach; ?>
+                    <div class="text-muted fst-italic mt-2">
+                        👍 Likes : <?= $totalLikes ?>
+                    </div>
+                </header>
+                <figure class="mb-4">
+                    <img class="img-fluid rounded article-image" src="/src/uploads/<?= $urlImg1 ?>" alt="Image de l'article" />
+                </figure>
+                <section class="mb-5">
+                    <p class="fs-5 mb-4"><?= $libChapoart ?></p>
+                    <p class="fs-5 mb-4"><?= $libAccrochart ?></p>
+                    <p class="fs-5 mb-4"><?= $parag1art ?></p>
+                    <h2 class="fw-bolder mb-4 mt-5"><?= $libSsTitr1art ?></h2>
+                    <p class="fs-5 mb-4"><?= $parag2art ?></p>
+                    <h2 class="fw-bolder mb-4 mt-5"><?= $libSsTitr2art ?></h2>
+                    <p class="fs-5 mb-4"><?= $parag3art ?></p>
+                </section>
+            </article>
 
+            <!-- Comments section -->
+            <section class="mb-5">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <?php if (!empty($latestComments)): ?>
+                            <?php foreach ($latestComments as $comment): ?>
+                                <strong><?= htmlspecialchars($comment['pseudoMemb']) ?> :</strong><br>
+                                <?= htmlspecialchars($comment['libCom']) ?><br><br>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            Aucun commentaire pour cet article.
+                        <?php endif; ?>
+                        <a href="addcom.php?numArt=<?= $numArt ?>" class="bouton" style="color : white;">Ajouter un commentaire</a>
+                    </div>
+                </div>
+
+                <!-- Like/Unlike buttons -->
+                <div class="mt-3">
+                    <form method="POST" style="display: inline;">
+                        <?php if (!$userLiked): ?>
+                            <button type="submit" name="likeArticle" class="btn btn-success">👍 J'aime</button>
+                        <?php else: ?>
+                            <button type="submit" name="unlikeArticle" class="btn btn-danger">❌ Je n' aime plus</button>
+                        <?php endif; ?>
+                    </form>
+                </div>
             </section>
-        </div>
-        <!-- Side widgets-->
-        <div class="col-lg-4 side-widget">
-            <!-- Search widget
-            <div class="card mb-4">
-                <div class="card-body"><?php echo $libTitrArt2 ?></div>
-                <img class="img-fluid rounded article-image" src="/src/uploads/<?php echo $urlImg2; ?>">
-                <div class="card-body"><?php echo $libChapoArt2 ?></div>
-                <a href="/views/frontend/articles/article2.php"> <div class="card-body">Voir l'article</div></a>
-            </div>
-            <div class="card mb-4">
-                <div class="card-body"><?php echo $libTitrart ?></div>
-                <img class="img-fluid rounded article-image" src="/src/uploads/<?php echo $urlImg1; ?>">
-                <div class="card-body"><?php echo $libChapoart ?></div>
-                <a href="/views/frontend/articles/article1.php"> <div class="card-body">Voir l'article</div></a>
-            </div> -->
         </div>
     </div>
 </div>
 <?php require_once '../../../footer.php'; ?>
-</main>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/scripts.js"></script>
-</html>
