@@ -73,12 +73,6 @@ if (isset($pseudoMemb)) {
         <div class="col-md-12"> 
 
         <br>
-
-        <h3>Commentaires de l'article : </h3> 
-
-
-
-
         </div>
     </div> 
 </div>
