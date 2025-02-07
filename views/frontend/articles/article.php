@@ -141,31 +141,34 @@ if ($result && $result[0]['alreadyLiked'] > 0) {
     $userLiked = true;
 }
 
-// Ajout d'un like si l'utilisateur n'a pas encore liké
-// Traitement des likes
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['likeArticle'])) {
-    if (!$userLiked) {
-        sql_insert(
-            "LIKEART",
-            "numMemb, numArt, likeA",
-            "$numMemb, $numArt, 1"
-        );
-        // Met à jour la variable pour refléter le nouvel état
+// Traitement des likes et dislikes
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['likeArticle']) && !$userLiked) {
+        // Ajouter un like
+        sql_insert("LIKEART", "numMemb, numArt, likeA", "$numMemb, $numArt, 1");
         $userLiked = true;
+        $totalLikes++; // Incrémente le total des likes
+
+    } elseif (isset($_POST['unlikeArticle']) && $userLiked) {
+        // Supprimer le like
+        sql_delete("LIKEART", "numMemb = $numMemb AND numArt = $numArt");
+        $userLiked = false;
+        $totalLikes--; // Décrémente le total des likes
     }
 }
+
 ?>
 
-<!-- Bouton Like/Commentaire -->
-
-<?php if (!$userLiked): ?>
+<!-- Bouton Like/Unlike -->
+<div class="mt-3">
     <form method="POST" style="display: inline;">
-        <button type="submit" name="likeArticle" class="btn btn-primary">Like</button>
+        <?php if (!$userLiked): ?>
+            <button type="submit" name="likeArticle" class="btn btn-outline-primary">👍 J'aime</button>
+        <?php else: ?>
+            <button type="submit" name="unlikeArticle" class="btn btn-danger">❌ Je n'aime plus</button>
+        <?php endif; ?>
     </form>
-<?php else: ?>
-    <p class="text-success mt-2">Vous avez aimé cet article.</p>
-<?php endif; ?>
-</form>
+</div>
 
             </section>
         </div>
