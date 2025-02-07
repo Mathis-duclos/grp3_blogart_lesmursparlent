@@ -20,3 +20,17 @@ Mdp : _s1c_LguUb9W15rKF0FkY99519z897jO6jOW1POisZx4nFIFvmhHRh_cub08Nb0P
 ## Repo GitHub
 
 https://github.com/Mathis-duclos/grp3_blogart_lesmursparlent
+
+
+## Avancée
+
+- Thématiques
+- Articles
+- MotsClé 
+- Likes
+- Commentaires 
+- password_verify 
+- membres 
+- statuts 
+- Login + hash + Afficher le btn admin dans le header uniquement quand connecté comme admin
+
