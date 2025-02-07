@@ -1,0 +1,166 @@
+#cb-cookie-banner {
+    font-family: 'inter';
+    position: fixed; /* Rend le bandeau fixe à un endroit spécifique */
+    bottom: 0;       /* Place le bandeau en bas de l'écran */
+    left: 0;         /* Aligne le bandeau au bord gauche */
+    width: 100%;     /* Fait en sorte que le bandeau occupe toute la largeur de l'écran */
+    z-index: 1000;   /* Assure que le bandeau est au-dessus des autres éléments */
+    background-color: #343a40; /* Arrière-plan sombre (couleur personnalisable) */
+    color: #fff;     /* Texte blanc */
+    padding: 1rem;   /* Ajoute un peu d'espace intérieur */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Légère ombre pour l'effet visuel */
+    text-align: center; /* Centrer le texte */
+}
+
+#cb-cookie-banner span{
+    font-family: 'inter';
+}
+
+
+#cb-cookie-banner .btn {
+    background-color: #711711; /* Change la couleur de fond du bouton */
+    border: none; /* Supprime les bordures */
+    color: white; /* Couleur du texte du bouton */
+}
+
+#cb-cookie-banner a {
+    color: #f6f6f6; /* Change la couleur du lien */
+    text-decoration: underline; /* Ajoute un soulignement */
+}
+
+.top-content img {
+    max-width: 100%;
+    height: auto;
+    margin-top: -3px;
+}
+
+.titre {
+    font-family: 'Lemon Milk';
+    font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
+    margin-left: 5vw;
+    margin-bottom: 100px;
+}
+
+.sous-titre {
+    margin-left: 5vw;
+    max-width: 60vw;
+}
+
+.ligne {
+    margin-top: 1vw;
+    
+}
+
+.ligne hr {
+    width: 90%;
+    opacity: 100%;
+    margin: auto;
+    border-width: 3px;
+}
+
+.titre img {
+    max-width: 2vw;
+    height: auto;
+}
+
+.a-la-une {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1vw;
+}
+
+.card-image {
+    width: 40vw;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%); /* Firefox */ 
+}
+
+.card-texte {
+    max-width: 40vw;
+}
+
+.a-la-une-card:hover .card-image{
+    -webkit-filter: grayscale(0%); /* Chrome, Safari, Opera */
+    filter: grayscale(0%); /* Firefox */
+    transition:all 0.3s;
+}
+
+.a-la-une-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 200px;
+    margin-bottom: 100px;
+}
+
+.a-la-une-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.a-la-une-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    background-color: #F6F6F6;
+    border-radius: 15px;
+    padding: 4vw 2vw;
+}
+
+.newsletter-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5vw;
+    gap: 30px;
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1vw;
+    margin-bottom: 100px;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1vw;
+    margin-bottom: 100px;
+}
+
+.form-top {
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+}
+
+#exampleInputMessage {
+    height: 200px;
+}
+
+.form-control {
+    border-style: none;
+    background-color: #F6F6F6;
+}

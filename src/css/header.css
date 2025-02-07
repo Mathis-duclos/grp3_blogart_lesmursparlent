@@ -1,0 +1,246 @@
+@font-face {
+    font-family: 'Inter';
+    src: url(../../src/font/Inter_24pt-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Lemon Milk';
+    font-style: normal;
+    font-weight: 400;
+    src: url(src/font/LEMONMILK-Regular.otf);
+}
+
+header h1 {
+    font-family: 'Lemon Milk';
+    font-size: 24px;
+}
+
+body h2 {
+    font-family: 'Lemon Milk';
+    font-size: 24px;
+}
+
+p {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+}
+
+
+body {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background-color: #711711;
+    color: white;
+}
+
+label {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+}
+
+input {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.bold {
+    font-family: 'Inter';
+    font-weight: 600;
+}
+
+.a-la-une-cards a {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+}
+
+.logo {
+    width: 4vw;
+    height: auto;
+}
+
+.nav a {
+    color: black; 
+    text-decoration: none; 
+}
+
+.nav a:hover {
+    color:#711711;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Lemon Milk';
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+.header-left {
+    margin-left: 5vw;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    flex-direction: row;
+}
+
+.header-right {
+    margin-right: 5vw;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    flex-direction: row;
+}
+
+.header-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+#searchCollapse {
+    position: absolute;
+    right: 5.5vw;
+    padding: 5px;
+    width: 240px; /* Taille fixe pour éviter les décalages */
+}
+
+.custom-form-search {
+    border: none;
+    outline: none;
+    background-color: #F6F6F6;
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+.bouton {
+    display: inline-flex;
+    flex-direction: row;
+    max-width: fit-content;
+    font-family: 'Lemon Milk';
+    align-items: center;
+    color: white;
+    background-color: #711711;
+    border-radius: 10px;
+    padding: 10px 15px;
+    gap: 0.5vw;
+}
+
+.bouton-image {
+    max-width: 15px;
+    height: auto;
+}
+
+.bouton:hover .bouton-image {
+    transform: translate(3px, -3px);}
+
+.bouton-image {
+    transition: 0.3s ease;
+}
+
+.bouton:hover {
+    padding: 10px 18px 10px 15px;
+}
+
+.bouton {
+    transition: 0.3s ease;
+}
+
+.custom-form {
+    width: 22.5vw;
+    background-color: #F6F6F6; /* Fond gris clair */
+    border: none; /* Supprime les contours */
+    outline: none; /* Supprime le contour bleu lorsqu'on clique */
+    padding: 10px; /* Ajoute un peu d'espace intérieur */
+    border-radius: 15px; /* Coins légèrement arrondis */
+}
+
+.custom-form-message {
+    width: 50vw;
+    background-color: #F6F6F6; /* Fond gris clair */
+    border: none; /* Supprime les contours */
+    outline: none; /* Supprime le contour bleu lorsqu'on clique */
+    padding: 10px; /* Ajoute un peu d'espace intérieur */
+    border-radius: 15px; /* Coins légèrement arrondis */
+}
+
+
+.mb-3 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Image du footer */
+.footer-image {
+    max-width: 100% !important; /* S'assurer que Bootstrap ne l'écrase pas */
+    height: auto !important;
+    display: block; /* Éviter les marges blanches inutiles */
+    margin: 0 auto; /* Centrer l'image */
+    padding: 20px 0 0 0  !important; /* Ajouter un peu d'espace */
+}
+
+/* Liens des règles */
+.regles a {
+    font-family: 'inter';
+    text-decoration: none !important;
+    color: black !important;
+    font-weight: bold; /* Ajoute de la visibilité */
+    font-weight: 400;
+}
+
+.regles a:hover {
+    color:#711711 !important;
+}
+
+/* Centrer le footer */
+footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px 0 0 0  !important; /* Ajouter un peu d'espace */
+    background-color: #f8f9fa !important; /* Ajouter un fond clair */
+    width: 100% !important;
+}
+
+/* Assurer un bon affichage des liens */
+.regles {
+    display: flex;
+    gap: 15px; /* Espacement entre les liens */
+}
+
+.confidentialite-content {
+    display: flex;
+    flex-direction: column;
+    gap:5vw;
+    margin-left: 5vw;
+}
+
+.cgu-content {
+    display: flex;
+    flex-direction: column;
+    gap:5vw;
+    margin-left: 5vw;
+}
