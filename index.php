@@ -49,8 +49,9 @@ $article = sql_select("ARTICLE", "*", null, null, "numArt DESC", "2");
         </button>
     </div>
     <section class="top-content">
-        <img src="src/images/top-content-image3.png">
-    </section>
+    <img src="src/images/top-content-image3.png" style="width: 100%; height: auto; display: block; object-fit: cover;">
+</section>
+
     <section class="a-la-une">
         <div class="ligne">
             <hr width="90%" color="black">

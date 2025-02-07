@@ -26,7 +26,7 @@
         </footer>
 
 			<section class="footer">
-				<img class="footer-image" src="/src/images/footer-image.png">
+                                <img class="footer-image" src="/src/images/footer-image.png" style="width: 100%; height: auto; display: block; object-fit: cover;">
 			</section>
 		</footer>
 </body>
