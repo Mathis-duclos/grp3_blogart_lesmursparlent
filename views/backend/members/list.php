@@ -33,7 +33,7 @@ $membres = sql_select("MEMBRE", "*");
                             <td><?php echo($membre['accordMemb']); ?></td>
                             <td>
                                 <a href="edit.php?numThem=<?php echo($membre['numMemb']); ?>" class="btn btn-primary">Edit</a>
-                                <a href="delete.php?numThem=<?php echo($membre['numMemb']); ?>" class="btn btn-danger disabled">Delete</a>
+                                <a href="delete.php?numMemb=<?php echo($membre['numMemb']); ?>" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>   
                     <?php } ?>

@@ -1,30 +1,34 @@
 <?php
 include '../../../header.php';
 
-if(isset($_GET['numMemb'])){
-    $numMemb = $_GET['numMemb'];
-    $prenomMemb = sql_select("MEMBRE", "prenomMemb", "numMemb = $numMemb")[0]['prenomMemb'];
+
+if (isset($_GET['numMemb'])) {
+    $numMemb = intval($_GET['numMemb']); // Conversion en entier 
+    $membre = sql_select("MEMBRE", "prenomMemb", "numMemb = $numMemb");
+    $prenomMemb = (!empty($membre)) ? $membre[0]['prenomMemb'] : "Membre introuvable";
+} else {
+    echo "Numéro du membre manquant.";
+    exit;
 }
 ?>
 
-<!-- Bootstrap form to create a new statut -->
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <h1>Suppression du membre</h1>
         </div>
         <div class="col-md-12">
-            <!-- Form to create a new statut -->
-            <form action="<?php echo ROOT_URL . '/api/members/delete.php' ?>" method="post">
+            <form action="<?php echo ROOT_URL . '/api/members/delete.php'; ?>" method="post">
                 <div class="form-group">
-                    <label for="prenomMemb">Prenom du membre</label>
-                    <input id="numMemb" name="numMemb" class="form-control" style="display: none" type="text" value="<?php echo($numMemb); ?>" readonly="readonly" />
-                    <input id="prenomMemb" name="prenomMemb" class="form-control" type="text" value="<?php echo($prenomMemb); ?>" readonly="readonly" disabled />
+                    <label for="prenomMemb">Prénom du membre</label>
+                    <input id="prenomMemb" class="form-control" type="text" value="<?php echo ($prenomMemb); ?>" readonly="readonly">
+                    <input type="hidden" id="numMemb" name="numMemb" value="<?php echo ($numMemb); ?>">
+                    <input type="hidden" name="prenomMemb" value="<?php echo ($prenomMemb); ?>">
                 </div>
                 <br />
                 <div class="form-group mt-2">
-                    <a href="list.php" class="btn btn-primary">List</a>
-                    <button type="submit" class="btn btn-danger">Confirmer delete ?</button>
+                    <a href="list.php" class="btn btn-primary">Retour à la liste</a>
+                    <button type="submit" class="btn btn-danger">Confirmer suppression</button>
                 </div>
             </form>
         </div>
