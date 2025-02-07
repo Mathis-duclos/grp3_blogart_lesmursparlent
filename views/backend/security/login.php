@@ -12,8 +12,8 @@ include '../../../header.php';
     </div>
     <section class="login">
         <div class="titre">
-            <h1>Connexion</h1>
-            <img class=bouton-image src="/src/svg/fleche-titre.svg">
+        <h1 style="font-size: 2.5rem;">Connexion</h1>
+        <img class=bouton-image src="/src/svg/fleche-titre.svg">
         </div>
         <div class="col-md-12">
             <form action="<?php echo ROOT_URL . '/api/security/login.php' ?>" method="post" onsubmit="return checkForm()" class="form-login">
@@ -26,20 +26,20 @@ include '../../../header.php';
                 <div class="form-group">
                     <label for="passMemb">Mot de passe</label>
                     <input type="password" class="form-control" id="passMemb" name="passMemb" maxlength="100" required>
-                    <button type="button" id="togglePassword" class="btn btn-secondary mt-2">Afficher</button>
+                    <button type="button" id="togglePassword" class="btn btn-secondary mt-2" style="background-color: #6c757d; color: white; border: none; padding: 5px 10px; cursor: pointer;">Afficher</button>
                     </div>
                     <span id="passwordError" class="error-message text-danger"></span>
                 </div>
                 <br>
                 <div class="bouton">
-                    <button type="submit" class="btn btn-success mt-3">Se connecter</button>
-                    <img class=bouton-image src="/src/svg/fleche-bouton.svg">
+                    <button type="submit" class="btn btn"  style="color: white" >Se connecter</button>
+                    
                 </div>
                 <br>
                 <br>
                 <div class="bouton">
-                    <a href="/views/backend/security/signup.php" class="btn btn-primary ">Créer un compte</a>
-                    <img class=bouton-image src="/src/svg/fleche-bouton.svg">
+                <a href="/views/backend/security/signup.php" class="btn btn" style="color: white"> Créer un compte </a>
+                    
                 </div>
             </form>
         </div>
