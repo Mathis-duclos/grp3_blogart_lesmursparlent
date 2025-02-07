@@ -14,6 +14,7 @@ $tabloLikes = sql_select($query, "MB.numMemb, MB.pseudoMemb, AR.numArt, AR.libTi
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>ID Membre</th>
                         <th>Membre</th>
                         <th>Titre article</th>
                         <th>Chapô article</th>
