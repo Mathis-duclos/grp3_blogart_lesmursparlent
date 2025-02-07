@@ -14,7 +14,7 @@ sql_connect();
         Pseudo déjà utilisé : veuillez recommencer
         </div>';
 
-}/*
+}*/
 
 
 
