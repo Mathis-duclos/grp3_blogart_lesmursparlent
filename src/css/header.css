@@ -124,7 +124,7 @@ input {
     position: absolute;
     right: 5.5vw;
     padding: 5px;
-    width: 200px; /* Taille fixe pour éviter les décalages */
+    width: 240px; /* Taille fixe pour éviter les décalages */
 }
 
 .custom-form-search {
@@ -192,7 +192,55 @@ input {
     flex-direction: column;
 }
 
+/* Image du footer */
 .footer-image {
-    max-width: 100%;
-    height: auto;
+    max-width: 100% !important; /* S'assurer que Bootstrap ne l'écrase pas */
+    height: auto !important;
+    display: block; /* Éviter les marges blanches inutiles */
+    margin: 0 auto; /* Centrer l'image */
+    padding: 20px 0 0 0  !important; /* Ajouter un peu d'espace */
+}
+
+/* Liens des règles */
+.regles a {
+    font-family: 'inter';
+    text-decoration: none !important;
+    color: black !important;
+    font-weight: bold; /* Ajoute de la visibilité */
+    font-weight: 400;
+}
+
+.regles a:hover {
+    color:#711711 !important;
+}
+
+/* Centrer le footer */
+footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px 0 0 0  !important; /* Ajouter un peu d'espace */
+    background-color: #f8f9fa !important; /* Ajouter un fond clair */
+    width: 100% !important;
+}
+
+/* Assurer un bon affichage des liens */
+.regles {
+    display: flex;
+    gap: 15px; /* Espacement entre les liens */
+}
+
+.confidentialite-content {
+    display: flex;
+    flex-direction: column;
+    gap:5vw;
+    margin-left: 5vw;
+}
+
+.cgu-content {
+    display: flex;
+    flex-direction: column;
+    gap:5vw;
+    margin-left: 5vw;
 }

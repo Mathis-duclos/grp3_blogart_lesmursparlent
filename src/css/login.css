@@ -64,3 +64,25 @@ form a:hover {
     outline: none; /* Supprime l'effet de focus par défaut */
     transition: border-bottom 0.3s ease-in-out;
 }
+
+.form-group, .btn-primary, .btn-success {
+    font-family: 'Inter' !important;
+}
+
+.bouton .btn-custom {
+    background-color: #711711 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.bouton .btn {
+    font-family: 'Lemon Milk';
+    margin: 0;
+    padding: 0;
+    background-color:#711711;
+    border: none;
+}
+
+.bouton .btn a{
+    font-family: 'Lemon Milk';
+}

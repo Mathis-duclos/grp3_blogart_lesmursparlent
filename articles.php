@@ -25,30 +25,38 @@ if ($searchMotCle) {
 ?>
 
 <main>
-
-
+    <div id="cb-cookie-banner" class="alert alert-dark text-center mb-0" role="alert">
+        <span>This website uses cookies to ensure you get the best experience on our website.</span>
+        <a href="https://www.cookiesandyou.com/" target="blank">Learn more</a>
+        <button type="button" class="btn btn-primary btn-sm ms-3" onclick="window.cb_hideCookieBanner()">
+            I Got It
+        </button>
+    </div>
     <section class="a-la-une">
-        <div class="titre">
-            <h2>LA LISTE DES ARTICLES</h2>
+        <div class="titre titre-articles">
+            <h2>NOS ARTICLES</h2>
             <img src="src/svg/fleche-titre.svg">
             <br>
         </div>
-
         <section class="search-bar d-flex justify-content-center my-4">
-    <form method="GET" action="articles.php" class="d-flex align-items-center gap-2">
-        <label for="searchMotCle" class="me-2 fw-bold">Rechercher :</label>
-        <select name="searchMotCle" id="searchMotCle" class="form-select w-auto">
-            <option value="">-- Sélectionner un mot-clé --</option>
-            <?php foreach ($motsCles as $mot) : ?>
-                <option value="<?php echo $mot['numMotCle']; ?>" 
-                    <?php echo (isset($_GET['searchMotCle']) && $_GET['searchMotCle'] == $mot['numMotCle']) ? 'selected' : ''; ?>>
-                    <?php echo htmlspecialchars($mot['libMotCle']); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <button type="submit" class="btn btn-primary">Rechercher</button>
-    </form>
-</section>
+            <form method="GET" action="articles.php" class="d-flex align-items-center gap-2">
+                <label for="searchMotCle" class="me-2 fw-bold">Rechercher :</label>
+                <select name="searchMotCle" id="searchMotCle" class="form-select w-auto">
+                    <option value="">Sélectionner un mot-clé</option>
+                    <?php foreach ($motsCles as $mot) : ?>
+                        <option value="<?php echo $mot['numMotCle']; ?>" 
+                            <?php echo (isset($_GET['searchMotCle']) && $_GET['searchMotCle'] == $mot['numMotCle']) ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($mot['libMotCle']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <div class="bouton">
+                    <button type="submit" class="btn-custom">Rechercher</button>
+                    <img class=bouton-image src="src/svg/fleche-bouton.svg">
+                </div>
+            </form>
+        </section>
+    </section>
 
 
         
@@ -102,4 +110,5 @@ if ($searchMotCle) {
             </div>
         </div>
     </section>
+    <?php require_once 'footer.php'; ?>
 </main>

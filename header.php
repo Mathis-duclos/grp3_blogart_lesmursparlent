@@ -23,7 +23,8 @@ if (isset($_SESSION['pseudoMemb'])) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bordeaux en Résistance - Accueil</title>
-    <link rel="stylesheet" href="/src/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/src/css/reset.css">
     <link rel="stylesheet" href="/src/css/index-style.css">
     <link rel="stylesheet" href="/src/css/font.css">
@@ -33,14 +34,12 @@ if (isset($_SESSION['pseudoMemb'])) {
     <link rel="stylesheet" href="/src/css/articles.css">
     <link rel="stylesheet" href="./src/cookie-banner.css">
     <link rel="icon" type="image/png" href="/src/svg/favicon.svg">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <header>
         <section class="menu">
             <div class="header-left">
-                <a href="./index.php"><img class="logo" src="/src/svg/logo.svg"></a>
+                <a href="/index.php"><img class="logo" src="/src/svg/logo.svg"></a>
                 <div class="nav">
                     <a href="/index.php">ACCUEIL</a>
                     <a href="/articles.php">ARTICLES</a>

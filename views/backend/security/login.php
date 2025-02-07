@@ -3,6 +3,13 @@ include '../../../header.php';
 ?>
 
 <main>
+    <div id="cb-cookie-banner" class="alert alert-dark text-center mb-0" role="alert">
+        <span>This website uses cookies to ensure you get the best experience on our website.</span>
+        <a href="https://www.cookiesandyou.com/" target="blank">Learn more</a>
+        <button type="button" class="btn btn-primary btn-sm ms-3" onclick="window.cb_hideCookieBanner()">
+            I Got It
+        </button>
+    </div>
     <section class="login">
         <div class="titre">
             <h1>Connexion</h1>
@@ -20,20 +27,27 @@ include '../../../header.php';
                     <label for="passMemb">Mot de passe</label>
                     <input type="password" class="form-control" id="passMemb" name="passMemb" maxlength="100" required>
                     <button type="button" id="togglePassword" class="btn btn-secondary mt-2">Afficher</button>
+                    </div>
                     <span id="passwordError" class="error-message text-danger"></span>
                 </div>
-
                 <br>
-                <button type="submit" class="btn btn-success mt-3">Se connecter</button>
+                <div class="bouton">
+                    <button type="submit" class="btn btn-success mt-3">Se connecter</button>
+                    <img class=bouton-image src="/src/svg/fleche-bouton.svg">
+                </div>
                 <br>
                 <br>
-                <a href="/views/backend/security/signup.php" class="btn btn-primary ">Créer un compte</a>
-
-
+                <div class="bouton">
+                    <a href="/views/backend/security/signup.php" class="btn btn-primary ">Créer un compte</a>
+                    <img class=bouton-image src="/src/svg/fleche-bouton.svg">
+                </div>
             </form>
         </div>
     </section>
-</main>    
+    <?php require_once 'footer.php'; ?>
+</main>
+
+
 <script>
     function checkForm() {
         var valid = true;

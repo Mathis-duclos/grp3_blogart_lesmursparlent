@@ -3,7 +3,7 @@ include './header.php';
 ?> 
 
 <main>
-    <section class="register">
+    <section class="login">
         <div class="titre">
             <h1>Inscription à la newsletter</h1>
             <img class=bouton-image src="/src/svg/fleche-titre.svg">
@@ -50,7 +50,10 @@ include './header.php';
                 </div>
                 <span id="accordError" class="error-message text-danger"></span>
             </div>
-            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="custom-button">S'inscrire</button>
+            <div class="bouton">
+                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="custom-button">S'inscrire</button>
+                <img class=bouton-image src="/src/svg/fleche-bouton.svg">
+            </div>
         </form>
     </section>
     <?php require_once 'footer.php'; ?>

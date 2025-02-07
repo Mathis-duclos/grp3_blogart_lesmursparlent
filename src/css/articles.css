@@ -76,3 +76,22 @@
     border-radius: 50px;
     width: 25vw;
 }
+.bouton .btn-custom {
+    background-color: #711711 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.a-la-une .titre-articles {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px !important;
+}
+
+.form-select {
+    outline: none;
+    font-family: 'inter';
+    border:none;
+    background-color: #F6F6F6;
+}
