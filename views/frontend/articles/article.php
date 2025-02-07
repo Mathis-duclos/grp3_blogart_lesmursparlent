@@ -27,6 +27,16 @@ $latestComments = sql_select(
 );
 
 
+// Récupérer les mots-clés associés à l'article
+$motsCles = sql_select(
+    "MOTCLE 
+    JOIN MOTCLEARTICLE ON MOTCLE.numMotCle = MOTCLEARTICLE.numMotCle",
+    "MOTCLE.libMotCle",
+    "MOTCLEARTICLE.numArt = $numArt"
+);
+
+
+
 
 
 
@@ -45,8 +55,11 @@ $latestComments = sql_select(
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2"><?php echo $dtCreaart ?></div>
                     <!-- Post categories-->
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Visite</a>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Lieux</a>
+                    <?php foreach ($motsCles as $motCle) : ?>
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">
+                    <?= htmlspecialchars($motCle['libMotCle']) ?>
+                    </a>
+                    <?php endforeach; ?>
                 </header>
                 <!-- Preview image figure-->
                 <figure class="mb-4"><img class="img-fluid rounded article-image" src="/src/uploads/<?php echo $urlImg1; ?>" alt="photo de Pierre Auzereau" /></figure>
