@@ -18,12 +18,12 @@ $libSsTitr2art = $art['libSsTitr2Art'];
 $parag3art = $art['parag3Art'];
 $plCl1 = $art['libConclArt'];
 
-$latestComments = sql_select("COMMENT", "libCom", "numArt = (SELECT MAX(numArt) FROM ARTICLE)");
+//$latestComments = sql_select("COMMENT", "libCom", "numArt = (SELECT MAX(numArt) FROM ARTICLE)");
 
 $latestComments = sql_select(
     "COMMENT JOIN MEMBRE ON COMMENT.numMemb = MEMBRE.numMemb",
     "MEMBRE.pseudoMemb, COMMENT.libCom",
-    "COMMENT.numArt = (SELECT MAX(numArt) FROM ARTICLE)"
+    "COMMENT.numArt = (SELECT MAX($numArt) FROM ARTICLE)"
 );
 
 
@@ -76,10 +76,10 @@ $latestComments = sql_select(
     echo "Aucun commentaire trouvé pour l'article le plus récent.";
     }
 
-
             ?>
 
-                <a href="addcom.php?numArt=<?php echo($article[1]['numArt']); ?>" class="bouton" style="color: white;">Ajouter commentaire</a>               
+                <a href="addcom.php?numArt=<?php echo $numArt; ?>" class="bouton" style="color: white;">Ajouter commentaire</a>
+            
                     </div>
                 </div>
             </section>
