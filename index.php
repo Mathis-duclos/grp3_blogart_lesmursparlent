@@ -9,12 +9,12 @@ sql_connect();
     echo $_SESSION['pseudoMemb'];
 }*/
 
-/*if ( isset($_GET["errorpseudo"]) && $_GET["errorpseudo"] == 1) {
+if ( isset($_GET["error"]) && $_GET["error"] == 1) {
     echo '<div style="background-color: red; color: white; padding: 10px; border-radius: 5px; text-align: center; width: fit-content; margin: 10px auto; font-weight: bold;">
-        Pseudo déjà utilisé : veuillez recommencer
+        Pseudo ou Mot de Passe incorrect, veuillez vous reconnecter. 
         </div>';
 
-}*/
+}
 
 
 

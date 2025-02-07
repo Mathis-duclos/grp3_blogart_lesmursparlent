@@ -1,6 +1,11 @@
 <?php
 include '../../header.php';
 
+if (!isset($_SESSION['pseudoMemb'])) {
+    header('Location: /../index.php'); // Redirection vers l'accueil si non admin
+    exit();
+} 
+
 
 
 ?>

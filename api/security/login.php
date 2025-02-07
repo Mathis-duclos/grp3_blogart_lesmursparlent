@@ -37,7 +37,7 @@ if ($passGood == true && $pseudoGood == true) {
     
 
 } else {
-    header(header: 'Location: ../../../index.php?login=error');
+    header(header: 'Location: ../../../index.php?error=1');
 }
 
 
