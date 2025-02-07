@@ -6,7 +6,7 @@ require_once '../../functions/ctrlSaisies.php';
 
 $numArt = ctrlSaisies($_GET['numArt']);
 
-
+sql_delete('MOTCLEARTICLE', "numArt = $numArt");
 sql_delete('ARTICLE', "numArt = $numArt");
 
 
