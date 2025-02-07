@@ -23,8 +23,9 @@ $plCl1 = $art['libConclArt'];
 $latestComments = sql_select(
     "COMMENT JOIN MEMBRE ON COMMENT.numMemb = MEMBRE.numMemb",
     "MEMBRE.pseudoMemb, COMMENT.libCom",
-    "COMMENT.numArt = (SELECT MAX($numArt) FROM ARTICLE)"
+    "COMMENT.numArt = $numArt AND COMMENT.attModOK = 1"
 );
+
 
 
 // Récupérer les mots-clés associés à l'article
