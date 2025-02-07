@@ -17,12 +17,14 @@
     <link rel="icon" type="image/png" href="/src/svg/favicon.svg">
 </head>
 <body>
-		<footer>
-			<div class="regles">
-				<a href="confidentialité.php">Politque de confidentialité</a>
-				<a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees">RGPD</a>
-				<a href="cgu.php">CGU</a>
-			</div>
+        <footer style="background-color: #f8f9fa; padding: 20px 0; text-align: center;">
+                <div class="regles" style="display: flex; justify-content: center; gap: 20px;">
+                <a href="confidentialité.php" style="text-decoration: none; color: black; font-weight: bold;">Politique de confidentialité</a>
+                <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees" style="text-decoration: none; color: black; font-weight: bold;">RGPD</a>
+                <a href="cgu.php" style="text-decoration: none; color: black; font-weight: bold;">CGU</a>
+                </div>
+        </footer>
+
 			<section class="footer">
 				<img class="footer-image" src="/src/images/footer-image.png">
 			</section>
